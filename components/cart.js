@@ -55,6 +55,7 @@ function Cart() {
               quantity={item.quantity}
               id={item.id}
               getCount={editQuantity}
+              image={item.image}
             />
           );
         })}

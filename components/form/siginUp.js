@@ -3,6 +3,7 @@ import { Button, TextField } from "@mui/material";
 import Link from "next/link";
 import { Auth } from "@/config/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import Typography from "@mui/material/Typography";
 function SignUp({ getUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,29 +30,35 @@ function SignUp({ getUser }) {
   };
   return (
     <form
-      className="container"
       style={{
         display: "flex",
         flexDirection: "column",
         gap: 5,
+        backgroundColor: "rebeccapurple",
+        height: "100%",
+        width: "100%",
         alignItems: "center",
+        justifyContent: "center",
       }}
     >
+      <Typography variant="h4" style={{ color: "#fff", fontWeight: "bold" }}>
+        Hi,There
+      </Typography>
       <TextField
-        sx={{ width: "100%", maxWidth: 300 }}
+        style={{ width: "100%", maxWidth: 300, backgroundColor: "#fff" }}
         placeholder="EMAIL"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
       <TextField
-        sx={{ width: "100%", maxWidth: 300 }}
+        style={{ width: "100%", maxWidth: 300, backgroundColor: "#fff" }}
         placeholder="PASSWORD"
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
       <TextField
-        sx={{ width: "100%", maxWidth: 300 }}
+        style={{ width: "100%", maxWidth: 300, backgroundColor: "#fff" }}
         placeholder="verify password"
         type="password"
         value={verifyPwd}
@@ -63,19 +70,21 @@ function SignUp({ getUser }) {
         variant="contained"
         color="secondary"
         onClick={handleSignUp}
-        sx={{ width: "100%", maxWidth: 300, height: 50 }}
+        sx={{ width: "100%", maxWidth: 300, height: 50, fontWeight: "bold" }}
       >
         Sign up
       </Button>
-      <p style={{ fontSize: 12 }}>Already have an Account?</p>
+      <p style={{ fontSize: 18, color: "#fff", fontWeight: "bold" }}>
+        Already have an Account?
+      </p>
 
       <Link
         href="/auth/login"
         style={{ width: "100%", maxWidth: 300, height: 50 }}
       >
         <Button
-          sx={{ width: "100%", maxWidth: 300, height: 50 }}
-          variant="outlined"
+          sx={{ width: "100%", maxWidth: 300, height: 50, fontWeight: "bold" }}
+          variant="contained"
           color="secondary"
         >
           Login

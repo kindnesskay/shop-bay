@@ -2,17 +2,23 @@
   box-sizing: border-box;
   margin: 0;
   font-family: "Segoe UI";
+  border: 0;
+}
+html {
+  width: 100%;
 }
 body {
   height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
-
+form input {
+  border: none;
+}
 .product_grid {
   padding: 5px;
   display: grid;
@@ -44,9 +50,8 @@ nav {
 }
 main {
   position: relative;
-  height: 100%;
   width: 100%;
-  overflow: auto;
+  height: 100%;
 }
 .loader {
   animation: rotate 0.8s infinite;
@@ -68,4 +73,5 @@ main {
 
 header {
   width: 100%;
+  height: fit-content;
 }

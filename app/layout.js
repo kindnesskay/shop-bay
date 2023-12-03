@@ -1,5 +1,7 @@
+import { Suspense } from "react";
 import "./globals.css";
 import Link from "next/link";
+import Loading from "@/components/loader";
 export const metadata = {
   title: "Fruits",
   description: "Fruits for sale",
@@ -15,6 +17,7 @@ export default function RootLayout({ children }) {
               width: "100%",
               height: 50,
               backgroundColor: "rebeccapurple",
+              position: "static",
             }}
           >
             <Link
@@ -26,7 +29,9 @@ export default function RootLayout({ children }) {
           </nav>
         </header>
 
-        <main>{children}</main>
+        <main>
+          <Suspense fallback={<Loading />}>{children}</Suspense>
+        </main>
       </body>
     </html>
   );
