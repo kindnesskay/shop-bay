@@ -1,30 +1,34 @@
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import { useState } from "react";
-import NewImageBox from "./imageBox";
-import { CloudUpload } from "@mui/icons-material";
+import { useState } from "react"
+import NewImageBox from "../form/imageBox"
+import { CloudUpload } from "@mui/icons-material"
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { Auth, db, storage } from "@/config/firebase";
 import { uid } from "uid";
 import { addDoc, collection } from "firebase/firestore";
 
-function Add() {
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  const [image, setImage] = useState("");
-  const [response, setResponse] = useState("");
-  const collectionRef = collection(db, "fruits");
+function CreatePost() {
+    const [title,setTitle]=useState('')
+    const [price,setPrice]=useState('')
+    const [image,setImage]=useState(null)
+    const [response, setResponse] = useState("");
+    const collectionRef = collection(db, "fruits");
+function clearAll(){
+  setPrice('')
+  setTitle('')
+  setImage('')
 
+}
   const uploadToDB = async (imageUrl) => {
     setResponse("loading..");
     await addDoc(collectionRef, {
-      name: name,
+      name: title,
       price: price,
       userID: Auth.currentUser.uid,
       image: imageUrl,
     });
     setResponse("success");
-    console.log(response);
+    clearAll()
+    
     try {
     } catch (error) {
       setResponse("failed");
@@ -32,7 +36,7 @@ function Add() {
     }
   };
   const handleUpload = async () => {
-    if (!name || !price || !image) return;
+    if (!title || !price || !image) return;
     const storageRef = ref(storage, `images/${uid() + image.name}`);
     const uploadTask = uploadBytesResumable(storageRef, image);
     uploadTask.on(
@@ -40,6 +44,7 @@ function Add() {
       (snapshot) => {
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          
       },
       (error) => {
         console.error(error);
@@ -52,43 +57,31 @@ function Add() {
     );
   };
   return (
-    <div
-      style={{
-        display: "grid",
-        placeItems: "center",
-        position: "relative",
-        gap: 5,
-      }}
-    >
-      <p style={{ color: response == "success" ? "green" : "red" }}>
-        {response}
-      </p>
+    
+    <div className="flex flex-col items-center p-2 w-full gap-3">
+      <span>{response}</span>
       <NewImageBox getImage={setImage} />
-      <TextField
-        sx={{ width: "100%", maxWidth: 300 }}
+      <input
+        className="text-center border-grey w-full rounded-2xl p-3"
         placeholder="name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
       />
-      <span style={{ fontSize: 14, color: "red" }}></span>
-      <TextField
-        sx={{ width: "100%", maxWidth: 300 }}
+      
+      <input
+        className="text-center border-grey rounded-2xl  w-full p-3"
         placeholder="price"
         type="number"
         value={price}
         onChange={(e) => setPrice(e.target.value)}
       />
-      <span style={{ fontSize: 14, color: "red" }}></span>
-      <Button
-        onClick={handleUpload}
-        sx={{ width: "100%", maxWidth: 300, height: 50 }}
-        variant="contained"
-        color="secondary"
-      >
+      
+      <button onClick={handleUpload} className="bg-violet-400 hover:bg-violet-500 w-full p-2 rounded-2xl text-white">
         <CloudUpload />
-      </Button>
+      </button>
     </div>
-  );
+    
+  )
 }
 
-export default Add;
+export default CreatePost

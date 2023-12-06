@@ -5,17 +5,13 @@ import { Button } from "@mui/material";
 function Cart() {
   const db_name = "fruits_unique";
   const [cartArray, setCartArray] = useState([]);
-  const [total, setTotal] = useState(null);
-  const [change, setChange] = useState(false);
-  const getTotal = (t, num) => {
-    return t + num;
-  };
+  const [total, setTotal] = useState([]);
+
   useEffect(() => {
     let items = getCartItems(db_name);
     setCartArray(items);
   }, []);
   const editQuantity = (id, count) => {
-    setChange([id, count]);
     if (count == 0) {
       setCartArray(
         cartArray.filter((item) => {
@@ -27,43 +23,46 @@ function Cart() {
     editCart(db_name, id, count);
   };
 
-  useEffect(() => {
-    if (!cartArray.length) return;
-    let t = cartArray.map((item) => {
-      return Number(item.price) * Number(item.quantity);
-    });
-    let tt = t.reduce(getTotal);
-    setTotal(tt);
-  }, [change]);
   return (
-    <div
-      style={{
-        position: "relative",
-        display: "flex",
-        flexDirection: "column",
-        gap: 5,
-      }}
-    >
-      {!cartArray.length && <h4>No item in cart</h4>}
-      {cartArray &&
-        cartArray.map((item) => {
-          return (
-            <CartItem
-              key={item.id}
-              name={item.name}
-              price={item.price}
-              quantity={item.quantity}
-              id={item.id}
-              getCount={editQuantity}
-              image={item.image}
-            />
-          );
-        })}
+    <>
+      {!cartArray || !cartArray.length > 1 ? (
+        <h1>No Item in cart</h1>
+      ) : (
+        <div
+          style={{
+            position: "relative",
+            display: "flex",
+            flexDirection: "column",
+            gap: 5,
+            alignItems: "center",
+            paddingTop: 20,
+          }}
+        >
+          {cartArray.map((item) => {
+            return (
+              <CartItem
+                key={item.id}
+                name={item.name}
+                price={item.price}
+                quantity={item.quantity}
+                id={item.id}
+                getCount={editQuantity}
+                image={item.image}
+              />
+            );
+          })}
+          <Checkout total={total} />
+        </div>
+      )}
+    </>
+  );
+}
 
-      <Button variant="contained" color="secondary" sx={{ width: "100%" }}>
-        Checkout
-      </Button>
-    </div>
+function Checkout({ total }) {
+  return (
+    <>
+      <h4>{total}</h4>
+    </>
   );
 }
 

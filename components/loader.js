@@ -3,9 +3,11 @@ export default function Loading() {
   return (
     <div
       style={{
-        height: "98%",
+        height: "100%",
         display: "grid",
         placeItems: "center",
+        width: "100%",
+        position: "absolute",
       }}
     >
       <div

@@ -1,29 +1,13 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+import berris from "../public/berries.png";
 export default function Page() {
   return (
     <>
-      <Box
-        sx={{
-          bgcolor: "rebeccapurple",
-          position: "relative",
-          width: "100%",
-          height: "100%",
-        }}
-      >
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            height: "70%",
-            paddingTop: 5,
-          }}
-        >
+      <div className="bg-purple-700 w-full h-full flex flex-col space-between">
+        <div className="flex flex-col items-center">
           <Typography
             variant="h1"
             sx={{
@@ -47,35 +31,20 @@ export default function Page() {
               maxHeight: 485,
               maxWidth: 514,
             }}
-            src={"/berries.png"}
+            src={berris}
             alt="orange image"
-            width={300}
-            height={300}
+            priority
           />
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            height: "30%",
-            bgcolor: "#000",
-          }}
-        >
           <Link
             href={"/shop"}
             style={{ padding: 5, textDecoration: "none", marginTop: 70 }}
           >
-            <Button
-              variant="contained"
-              color="secondary"
-              sx={{ fontWeight: "bold" }}
-            >
+            <button className="p-2  z-10 relative text-white font-bold border-solid border-2 border-slate-200">
               Shop Products
-            </Button>
+            </button>
           </Link>
-        </Box>
-      </Box>
+        </div>
+      </div>
     </>
   );
 }

@@ -1,14 +1,15 @@
 "use client";
+import { UserContext } from "@/app/context/usercontext";
 import Login from "@/components/form/login";
-import { Auth } from "@/config/firebase";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 function Page() {
-  const [user, setUser] = useState(null);
+  const { user, setUser } = useContext(UserContext);
   const router = useRouter();
   useEffect(() => {
+    console.log(user);
     if (user) {
-      router.push("/admin");
+      router.push("/profile");
     }
   }, [user]);
   return (

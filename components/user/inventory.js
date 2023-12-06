@@ -24,7 +24,6 @@ function Inventory() {
           return { id: doc.id, name: doc.data().name, price: doc.data().price };
         });
         setItems(itemsArray);
-        console.log(itemsArray);
       } catch (error) {
         console.error(error);
       }
