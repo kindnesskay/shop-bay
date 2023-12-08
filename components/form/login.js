@@ -1,9 +1,7 @@
 import { useState } from "react";
-import { Button, TextField } from "@mui/material";
 import Link from "next/link";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Auth } from "@/config/firebase";
-import TYpography from "@mui/material/Typography";
 function Login({ getUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,82 +15,52 @@ function Login({ getUser }) {
     signInWithEmailAndPassword(Auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
+        console.log(user);
         getUser(user);
       })
       .catch((error) => console.log(error.code, error.message));
   };
   return (
-    <form
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: 5,
-
-        backgroundColor: "rebeccapurple",
-        height: "100%",
-        width: "100%",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <TYpography
-        variant="h4"
-        style={{ color: "#fff", fontWeight: "bold", marginBottom: 10 }}
-      >
-        Welcome Back
-      </TYpography>
-      <TextField
-        style={{
-          width: "100%",
-          maxWidth: 300,
-          fontSize: 24,
-          backgroundColor: "#fff",
-          border: "none",
-        }}
-        placeholder="EMAIL"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <span style={{ fontSize: 14, color: "red" }}>{emailError}</span>
-      <TextField
-        sx={{
-          width: "100%",
-          maxWidth: 300,
-          fontSize: 24,
-          backgroundColor: "#fff",
-          border: "none",
-        }}
-        placeholder="PASSWORD"
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <span style={{ fontSize: 14, color: "red" }}>{passwordError}</span>
-      <Button
-        onClick={handleSignIn}
-        sx={{ width: "100%", maxWidth: 300, height: 50, fontWeight: "bold" }}
-        variant="contained"
-        color="secondary"
-      >
-        LogIn
-      </Button>
-
-      <p style={{ fontSize: 18, color: "#fff", fontWeight: "bold" }}>
-        Dont have an account?
-      </p>
-      <Link
-        href="/auth/signup"
-        style={{ width: "100%", maxWidth: 300, height: 50 }}
-      >
-        <Button
-          variant="contained"
-          color="secondary"
-          sx={{ width: "100%", maxWidth: 300, height: 50, fontWeight: "bold" }}
+    <section className="h-full flex justify-center items-center p-2">
+      <form className="flex flex-col gap-4 w-full max-w-sm">
+        <h4 className="text-center text-4xl font-semibold">Welcome Back</h4>
+        <label htmlFor="email" className="text-2xl font-semibold ">
+          Email
+        </label>
+        <input
+          name="email"
+          className="text-center h-16 text-2xl text-gray-700 text-md rounded-xl ring-1 ring-inset ring-gray-400 p-2"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <span>{emailError}</span>
+        <label htmlFor="password" className="text-2xl font-semibold">
+          {" "}
+          Password
+        </label>
+        <input
+          className="text-center text-gray-700 h-16  text-2xl text-md rounded-xl ring-1 ring-inset ring-gray-400 p-2"
+          type="password"
+          name="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <span>{passwordError}</span>
+        <button
+          className="bg-sky-950 text-white h-16 p-2 w-full rounded-xl font-semibold text-2xl"
+          onClick={handleSignIn}
         >
-          create accout
-        </Button>
-      </Link>
-    </form>
+          LogIn
+        </button>
+
+        <p className="text-center text-lg text-gray-800">
+          Dont have an account?{" "}
+          <Link href="/auth/signup" className="underline underline-offset-4">
+            sign up
+          </Link>
+        </p>
+      </form>
+    </section>
   );
 }
 

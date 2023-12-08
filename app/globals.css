@@ -7,30 +7,9 @@
   margin: 0;
   font-family: "Segoe UI";
   border: 0;
+  padding: 0;
 }
-/* html {
-  width: 100%;
-}
-body {
-  position: relative;
-  min-height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-form input {
-  border: none;
-} */
-.product_grid {
-  padding: 5px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-}
-.border {
+.red-border {
   border: 1px solid red;
 }
 .border-grey {
@@ -39,17 +18,6 @@ form input {
   margin-bottom: 5px;
 }
 
-a {
-  text-decoration: none;
-}
-nav {
-  padding: 10px;
-}
-/* main {
-  position: relative;
-  width: 100%;
-  min-height: calc(100vh - 50px);
-} */
 .loader {
   animation: rotate 0.8s infinite;
 }
@@ -67,8 +35,3 @@ nav {
     transform: scale(150%) rotate(360deg);
   }
 }
-
-/* header {
-  width: 100%;
-  height: fit-content;
-} */

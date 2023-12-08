@@ -53,7 +53,7 @@ function Page() {
         </h4>
       ) : (
         <div className="mx-auto max-w-2xl px-1.5 py-1.5 sm:px-1.5 sm:py-4 lg:max-w-7xl lg:px-8">
-          <div className="grid grid-cols-2 gap-x-2.5 gap-y-2.5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+          <div className="grid grid-cols-1 xs:grid-cols-3 xxs:grid-cols-2 gap-x-2 gap-y-2.5  sm:grid-cols-4 md:grid-cols-4  md:gap-x-4 lg:gap-x-8">
             {data?.map((item) => {
               return (
                 <ProductCard
