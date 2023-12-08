@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+import defaultTheme from "tailwindcss/defaultTheme";
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}", // Note the addition of the `app` directory.
@@ -6,7 +6,12 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    screens: {
+      xxs: "320px",
+      ...defaultTheme.screens,
+      xs: "420px",
+      ...defaultTheme.screens,
+    },
   },
   plugins: [],
 };

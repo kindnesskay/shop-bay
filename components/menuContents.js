@@ -4,10 +4,10 @@ import { useState } from "react";
 function MenuContents({ title, array }) {
   const [state, setState] = useState(false);
   return (
-    <div className="flex flex-col items-center w-full">
+    <div className="flex flex-col w-full">
       <h4
         onClick={() => setState(!state)}
-        className="border-grey font-bold w-full flex justify-between"
+        className="border-grey font-semibold w-full flex justify-between "
       >
         {title}
         <span>
@@ -15,16 +15,13 @@ function MenuContents({ title, array }) {
         </span>
       </h4>
       <ul
-        className="w-full "
+        className="w-full"
         style={{ listStyle: "none", display: state ? "none" : "block" }}
       >
         {array &&
           array.map((item, index) => {
             return (
-              <li
-                key={index}
-                className="p-2 font-semibold hover:text-white hover:bg-violet-300 flex flex-col items-center"
-              >
+              <li key={index} className="w-full pl-2 mb-2">
                 {item}
               </li>
             );

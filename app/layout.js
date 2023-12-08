@@ -3,11 +3,12 @@ import "./globals.css";
 import Link from "next/link";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import { Menu, ShoppingCart } from "@mui/icons-material";
+import { Close, Menu } from "@mui/icons-material";
 import { useState } from "react";
 import Cart from "@/components/cart";
 import { UserContextProvider } from "./context/usercontext";
 import Profilenav from "@/components/profilenav";
+import Image from "next/image";
 import MenuContents from "@/components/menuContents";
 import {
   LoginButton,
@@ -15,37 +16,35 @@ import {
   ShopButton,
   SignOut,
   SignUpButton,
-} from "@/components/buttonLinks";
-
+  ShoppingCartButton,
+} from "../components/buttonLinks";
+import logo from "../assets/logo.svg";
 export default function RootLayout({ children }) {
   const [menuState, setMenuState] = useState(false);
   const [cartState, setCartState] = useState(false);
   return (
     <html lang="en">
       <UserContextProvider>
-        <body className=" w-full h-screen relative overflow-hidden pb-28">
+        <body className=" w-full h-screen relative overflow-x-hidden">
           <header>
             <title>Fruits website</title>
-            <nav className="w-full flex gap-3 justify-between items-center h-14 bg-purple-700">
-              <IconButton
-                sx={{ color: "#fff" }}
-                onClick={() => setMenuState(true)}
-              >
-                <Menu />
-              </IconButton>
-              <Link href="/" className="text-white font-bold text-lg">
-                Fruits
+            <nav className="w-full flex gap-3 justify-between items-center h-12 pl-4 ">
+              <div className="flex gap-4">
+                <IconButton
+                  onClick={() => setMenuState(true)}
+                  className="text-sky-900"
+                >
+                  <Menu />
+                </IconButton>
+              </div>
+              <Link href="/">
+                <Image height={48} width={48} src={logo} />
               </Link>
 
               <div className="flex gap-2 items-center p-3">
-                <IconButton
-                  className="text-white"
-                  onClick={() => setCartState(true)}
-                >
-                  <ShoppingCart />
-                </IconButton>
+                <ShoppingCartButton onClick={() => setCartState(true)} />
+                <Profilenav />
               </div>
-              <Profilenav />
             </nav>
           </header>
           <Drawer
@@ -53,12 +52,27 @@ export default function RootLayout({ children }) {
             open={menuState}
             onClose={() => setMenuState(false)}
           >
-            <div style={{ width: 250 }} className="pb-4 relative h-full ">
+            <div className="relative h-full w-64">
+              <div className="flex gap-3">
+                <IconButton
+                  className="text-black"
+                  onClick={() => setMenuState(false)}
+                >
+                  <Close />
+                </IconButton>
+                <div>
+                  <Image alt="logo" height={48} width={48} src={logo} />
+                </div>
+              </div>
               <MenuContents
                 title={"Account"}
                 array={[<ProfileButton />, <LoginButton />, <SignUpButton />]}
               />
               <MenuContents title={"Navigations"} array={[<ShopButton />]} />
+              <MenuContents
+                title={"categories"}
+                array={["Clothing", "Shoes", "Accessories"]}
+              />
               <div className="absolute bottom-0 w-full mb-4">
                 <SignOut />
               </div>
@@ -74,9 +88,9 @@ export default function RootLayout({ children }) {
             </div>
           </Drawer>
 
-          <main className=" h-full overflow-auto">{children}</main>
+          <main className="flex-1 h-full">{children}</main>
 
-          <footer className="h-14 w-full bg-purple-700 absolute bottom-0"></footer>
+          <footer className="h-16 w-full"></footer>
         </body>
       </UserContextProvider>
     </html>

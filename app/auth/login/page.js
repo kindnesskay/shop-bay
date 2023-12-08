@@ -2,13 +2,12 @@
 import { UserContext } from "@/app/context/usercontext";
 import Login from "@/components/form/login";
 import { useRouter } from "next/navigation";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 function Page() {
   const { user, setUser } = useContext(UserContext);
   const router = useRouter();
   useEffect(() => {
-    console.log(user);
-    if (user) {
+    if (user !== null) {
       router.push("/profile");
     }
   }, [user]);

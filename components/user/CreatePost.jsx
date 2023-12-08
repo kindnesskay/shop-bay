@@ -12,12 +12,14 @@ function CreatePost() {
     const [image,setImage]=useState(null)
     const [response, setResponse] = useState("");
     const collectionRef = collection(db, "fruits");
+    const uid_string=uid()
 function clearAll(){
   setPrice('')
-  setTitle('')
+  setTitle('') 
   setImage('')
 
 }
+
   const uploadToDB = async (imageUrl) => {
     setResponse("loading..");
     await addDoc(collectionRef, {
@@ -25,6 +27,7 @@ function clearAll(){
       price: price,
       userID: Auth.currentUser.uid,
       image: imageUrl,
+      imageName:uid_string+image.name
     });
     setResponse("success");
     clearAll()
@@ -37,7 +40,7 @@ function clearAll(){
   };
   const handleUpload = async () => {
     if (!title || !price || !image) return;
-    const storageRef = ref(storage, `images/${uid() + image.name}`);
+    const storageRef = ref(storage, `images/${uid_string + image.name}`);
     const uploadTask = uploadBytesResumable(storageRef, image);
     uploadTask.on(
       "state_changed",
@@ -62,21 +65,21 @@ function clearAll(){
       <span>{response}</span>
       <NewImageBox getImage={setImage} />
       <input
-        className="text-center border-grey w-full rounded-2xl p-3"
+        className="text-center h-12 text-lg border-grey w-full rounded-2xl p-3"
         placeholder="name"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
       
       <input
-        className="text-center border-grey rounded-2xl  w-full p-3"
+        className="h-12 text-lg text-center border-grey rounded-2xl  w-full p-3"
         placeholder="price"
         type="number"
         value={price}
         onChange={(e) => setPrice(e.target.value)}
       />
       
-      <button onClick={handleUpload} className="bg-violet-400 hover:bg-violet-500 w-full p-2 rounded-2xl text-white">
+      <button onClick={handleUpload} className="bg-sky-700 p-2 hover:bg-violet-500  h-12 w-full p-2 rounded-2xl text-white">
         <CloudUpload />
       </button>
     </div>

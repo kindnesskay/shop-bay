@@ -1,50 +1,35 @@
 "use client";
-import Image from "next/image";
-import Link from "next/link";
-import Typography from "@mui/material/Typography";
-import berris from "../public/berries.png";
+
+import HorizontalComp from "@/components/horizontalComp";
+import { Search } from "@mui/icons-material";
+const data = [
+  { id: 1, name: "product", price: 500 },
+  { id: 2, name: "product", price: 500 },
+  { id: 3, name: "product", price: 500 },
+  { id: 4, name: "product", price: 500 },
+  { id: 5, name: "product", price: 500 },
+];
+import ProductCard from "@/components/productCard";
+const product = data.map((item) => {
+  return <ProductCard item={item} />;
+});
 export default function Page() {
   return (
-    <>
-      <div className="bg-purple-700 w-full h-full flex flex-col space-between">
-        <div className="flex flex-col items-center">
-          <Typography
-            variant="h1"
-            sx={{
-              fontSize: "clamp(40px,60px,80px)",
-              position: "relative",
-              zIndex: 1,
-              textAlign: "center",
-              fontWeight: "bold",
-              color: "#fff",
-            }}
-          >
-            Fruits,The Fresh Ones
-          </Typography>
-
-          <Image
-            style={{
-              position: "absolute",
-              top: 120,
-              width: "auto",
-              height: "auto",
-              maxHeight: 485,
-              maxWidth: 514,
-            }}
-            src={berris}
-            alt="orange image"
-            priority
-          />
-          <Link
-            href={"/shop"}
-            style={{ padding: 5, textDecoration: "none", marginTop: 70 }}
-          >
-            <button className="p-2  z-10 relative text-white font-bold border-solid border-2 border-slate-200">
-              Shop Products
-            </button>
-          </Link>
-        </div>
+    <section className="w-full h-full flex items-center flex-col gap-4 space-between p-2">
+      <div className="w-full h-8 flex relative rounded-lg overflow-hidden pl-8 border-solid border border-gray-200">
+        <span className="absolute text-gray-400 left-0 h-full w-8 flex items-center">
+          <Search />
+        </span>
+        <input
+          className="h-full w-full"
+          type="search"
+          placeholder="search products , brands and categories"
+        />
       </div>
-    </>
+      <div className="h-44 w-full bg-slate-300"></div>
+      <>
+        <HorizontalComp title={"New Arrivals"} array={product} />
+      </>
+    </section>
   );
 }
