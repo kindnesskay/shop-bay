@@ -89,7 +89,11 @@ function SignUp() {
             </button>
             <p className="text-center text-xl text-sm text-gray-800">
               Already have an Account?{" "}
-              <Link href="/auth/login" className="underline underline-offset-4">
+              <Link
+                onClick={() => setIsLoading(true)}
+                href="/auth/login"
+                className="underline underline-offset-4"
+              >
                 Login
               </Link>
             </p>
