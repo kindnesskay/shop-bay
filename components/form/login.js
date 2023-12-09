@@ -15,6 +15,7 @@ function Login() {
   const { isLoading, setIsLoading } = useContext(UserContext);
   const router = useRouter();
   useEffect(() => {
+    setIsLoading(false);
     if (user !== null) {
       router.push("/profile");
     }
