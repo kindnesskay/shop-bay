@@ -15,6 +15,7 @@ function Login() {
   const { isLoading, setIsLoading } = useContext(UserContext);
   const router = useRouter();
   useEffect(() => {
+    setIsLoading(false);
     if (user !== null) {
       router.push("/profile");
     }
@@ -74,6 +75,7 @@ function Login() {
             <p className="text-center text-lg text-gray-800">
               Dont have an account?{" "}
               <Link
+                onClick={() => setIsLoading(true)}
                 href="/auth/signup"
                 className="underline underline-offset-4"
               >
