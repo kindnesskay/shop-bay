@@ -9,13 +9,6 @@ import {
   where,
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import RotateRight from "@mui/icons-material/RotateRight";
 import { deleteObject, getStorage, ref } from "firebase/storage";
 
@@ -61,21 +54,21 @@ function Inventory() {
       <h4 className="text-2xl font-semibold ">Inventory</h4>
       <table className="w-full max-w-sm">
         <tr>
-          <td>Name</td>
-          <td>Price</td>
-          <td></td>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Remove</th>
         </tr>
 
         {items &&
           items.map((fruit) => {
             return (
-              <tr key={fruit.id}>
-                <td>{fruit.name}</td>
-                <td>{fruit.price}</td>
-                <td>
+              <tr key={fruit.id} className="text-center">
+                <td className="text-center">{fruit.name}</td>
+                <td className="text-center">{fruit.price}</td>
+                <td className="text-center">
                   <button
                     onClick={() => handleDelete(fruit.id)}
-                    className="text-red-500"
+                    className="text-red-500 "
                   >
                     Delete
                   </button>
@@ -85,17 +78,14 @@ function Inventory() {
           })}
       </table>
       {!items.length && (
-        <Typography sx={{ textAlign: "center", padding: 2 }}>
+        <p className="text-center text-grey-600 font-semibold">
           No data to show
-        </Typography>
+        </p>
       )}
-      <Button
-        onClick={() => setRelaod(true)}
-        color="secondary"
-        startIcon={<RotateRight />}
-      >
+      <button onClick={() => setRelaod(true)} className="mt-4 text-sky-900">
+        <RotateRight />
         reload
-      </Button>
+      </button>
     </div>
   );
 }

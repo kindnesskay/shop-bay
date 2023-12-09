@@ -4,7 +4,7 @@ import Link from "next/link";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import { Close, Menu } from "@mui/icons-material";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Cart from "@/components/cart";
 import { UserContextProvider } from "./context/usercontext";
 import Profilenav from "@/components/profilenav";
@@ -19,6 +19,7 @@ import {
   ShoppingCartButton,
 } from "../components/buttonLinks";
 import logo from "../assets/logo.svg";
+import Loading from "@/components/loader";
 export default function RootLayout({ children }) {
   const [menuState, setMenuState] = useState(false);
   const [cartState, setCartState] = useState(false);
@@ -28,7 +29,7 @@ export default function RootLayout({ children }) {
         <body className=" w-full h-screen relative overflow-x-hidden">
           <header>
             <title>Fruits website</title>
-            <nav className="w-full flex gap-3 justify-between items-center h-12 pl-4 ">
+            <nav className="w-full flex gap-3 justify-between items-center h-16 pl-4 ">
               <div className="flex gap-4">
                 <IconButton
                   onClick={() => setMenuState(true)}
@@ -38,7 +39,7 @@ export default function RootLayout({ children }) {
                 </IconButton>
               </div>
               <Link href="/">
-                <Image height={48} width={48} src={logo} />
+                <Image alt="logo" height={48} width={48} src={logo} />
               </Link>
 
               <div className="flex gap-2 items-center p-3">
@@ -87,8 +88,9 @@ export default function RootLayout({ children }) {
               <Cart />
             </div>
           </Drawer>
-
-          <main className="flex-1 h-full">{children}</main>
+          <Suspense fallback={<Loading />}>
+            <main className="flex-1 h-full">{children}</main>
+          </Suspense>
 
           <footer className="h-16 w-full"></footer>
         </body>

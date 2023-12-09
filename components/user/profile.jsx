@@ -1,6 +1,6 @@
 import { UserContext } from "@/app/context/usercontext"
 import { DynamicFeed, Logout, PostAdd, } from "@mui/icons-material"
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import CreatePost from "./CreatePost"
 import { signOut } from "firebase/auth";
 import { Auth } from "@/config/firebase"
@@ -8,6 +8,10 @@ import Inventory from "./inventory"
 import Profilephoto from "../profilephoto"
 function Profile() {
     const {user}=useContext(UserContext)
+    const {setIsLoading}=useContext(UserContext)
+    useEffect(()=>{
+setIsLoading(false)
+    },[])
     const [post,setPost]=useState(false)
     function handleLogout() {
     signOut(Auth);
@@ -15,7 +19,7 @@ function Profile() {
   return (
     <div className="w-full flex flex-col items-center">
     <div className="w-full p-2">
-        <button className="p-2 text-white bg-violet-300 rounded-2xl" onClick={handleLogout}><Logout/></button>
+        <button className="p-2 text-white bg-sky-800 hover:bg-sky-950 rounded-2xl" onClick={handleLogout}><Logout/></button>
     </div>
         <div className="p-4 flex flex-col items-center justify-center  h-50">
             <Profilephoto/>
