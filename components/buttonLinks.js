@@ -65,8 +65,9 @@ export const ShopButton = () => {
 
 export function ShoppingCartButton({ onClick }) {
   return (
-    <IconButton onClick={onClick} className="text-sky-900">
+    <IconButton onClick={onClick} className="w-fit flex text-sky-900">
       <ShoppingCart />
+      <p className="text-lg font-semibold hidden lg:block">cart</p>
     </IconButton>
   );
 }

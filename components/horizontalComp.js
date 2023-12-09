@@ -1,8 +1,8 @@
 function HorizontalComp({ title, array }) {
   return (
-    <div className="min:h-44  w-full flex flex-col ">
-      <h4 className="font-bold ">{title}</h4>
-      <div className="flex gap-3  min:h-36 p-2 snap-x items-center overflow-x-auto overflow-y-hidden">
+    <div className="min:h-44  w-full p-2 flex flex-col items-center ">
+      <h4 className="font-bold w-full ml-8 ">{title}</h4>
+      <div className="flex w-fit gap-3 min:h-36 p-2 snap-mandatory snap-x max-w-full overflow-x-auto overflow-y-hidden">
         {array &&
           array.map((item, index) => (
             <div
