@@ -6,6 +6,7 @@ export default function Profilephoto() {
     <div className="h-48 w-48 overflow-hidden relative border-grey rounded-full ">
       <Image
         height={100}
+        priority
         width={100}
         className="h-full w-full rounded-full"
         src={imageUrl || "/no_image.jpg"}

@@ -46,7 +46,7 @@ export const SignOut = () => {
       {user && (
         <button
           onClick={handleClick}
-          className="p-2 bg-purple-500 w-full text-center text-white font-semibold"
+          className="p-2  w-full text-center  font-semibold"
         >
           Signout
         </button>
