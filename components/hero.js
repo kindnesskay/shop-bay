@@ -1,5 +1,4 @@
 import Image from "next/image";
-import cartImage from "../assets/cartimage.png";
 function Hero() {
   return (
     <section className="w-full h-48 flex overflow-x-auto snap-mandatory snap-x ">
@@ -8,7 +7,7 @@ function Hero() {
           We Are <span className=" text-sky-900">Style</span>
         </h1>
         <Image
-          src={cartImage}
+          src="/assets/cartImage.png"
           height={500}
           width={600}
           className="h-auto w-auto max-h-full  max-w-full absolute top-0 right-0"
@@ -21,7 +20,7 @@ function Hero() {
           We Are <span className=" text-sky-900">Style</span>
         </h1>
         <Image
-          src={cartImage}
+          src="/assets/cartImage.png"
           height={500}
           width={600}
           className="h-auto w-auto max-h-full max-w-full absolute top-0 right-0"
@@ -33,7 +32,7 @@ function Hero() {
           We Are <span className=" text-sky-900">Style</span>
         </h1>
         <Image
-          src={cartImage}
+          src="/assets/cartImage.png"
           height={500}
           width={600}
           className="h-auto w-auto max-h-full max-w-full absolute top-0 right-0"

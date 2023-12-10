@@ -18,7 +18,7 @@ function CartItem({ name, image, price, quantity, getCount, id, getTotal }) {
     getCount(id, count);
     setTotal(Number(price) * Number(count));
     if (getTotal) {
-      getTotal(Number(price) * Number(count));
+      getTotal(id, Number(price) * Number(count));
     }
   }, [count]);
   return (

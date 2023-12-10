@@ -1,17 +1,13 @@
 "use client";
 import HorizontalComp from "@/components/horizontalComp";
 import { Search } from "@mui/icons-material";
-import clothes from "../assets/icons/clothes.png";
-import dress from "../assets/icons/dress.png";
-import hoddie from "../assets/icons/hoddie.png";
-import plane from "../assets/icons/plane.png";
-import food from "../assets/icons/food.png";
+
 const data = [
-  { id: 1, name: "Clothe", price: 500, image: clothes },
-  { id: 2, name: "Dress", price: 1500, image: dress },
-  { id: 3, name: "Hoddie", price: 2500, image: hoddie },
-  { id: 4, name: "Plane", price: 3500, image: plane },
-  { id: 5, name: "Food", price: 5300, image: food },
+  { id: 1, name: "Clothe", price: 500, image: "/assets/icons/clothes.png" },
+  { id: 2, name: "Dress", price: 1500, image: "/assets/icons/dress.png" },
+  { id: 3, name: "Hoddie", price: 2500, image: "/assets/icons/hoddie.png" },
+  { id: 4, name: "Plane", price: 3500, image: "/assets/icons/plane.png" },
+  { id: 5, name: "Food", price: 5300, image: "/assets/icons/food.png" },
 ];
 
 import ProductCard from "@/components/productCard";
