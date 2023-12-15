@@ -1,25 +1,32 @@
 "use client";
+import { UserContext } from "@/app/context/usercontext";
 import { Settings } from "@mui/icons-material";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
 export default function Profile() {
+  const { user } = useContext(UserContext);
+  const [userEmail, setUserEmail] = useState("");
+  useEffect(() => {
+    setUserEmail(user.email);
+  }, []);
   return (
     <div className="h-full ">
-      <ProfileHeader />
+      <ProfileHeader userEmail={userEmail} />
       <Navigations />
     </div>
   );
 }
 
-function ProfileHeader() {
+function ProfileHeader({ userEmail }) {
   return (
     <div>
       <div className="h-20 w-full p-2 px-4 flex justify-between">
-        <div className="flex gap-3 items-center">
-          <div className="rounded-full overflow-hidden w-fit">
+        <div className="flex  flex-col gap-3 h-fit items-center">
+          <div className="rounded-full h-fit overflow-hidden w-fit">
             <Image src={"/no_image.jpg"} height={48} width={48} />
           </div>
-          <p>user name</p>
+          <p className="text-xs ">{userEmail}</p>
         </div>
         <div className="flex gap-3 items-center w-fit">
           <p className="text-gray-500 text-lg">Settings</p>
