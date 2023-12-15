@@ -19,10 +19,10 @@ import {
   ShoppingCartButton,
 } from "../components/buttonLinks";
 import logo from "../assets/logo.svg";
-import Loading from "@/components/loader";
 export default function RootLayout({ children }) {
   const [menuState, setMenuState] = useState(false);
   const [cartState, setCartState] = useState(false);
+
   return (
     <html lang="en" className="w-full flex min-h-screen justify-center">
       <UserContextProvider>
@@ -84,7 +84,7 @@ export default function RootLayout({ children }) {
             open={cartState}
             onClose={() => setCartState(false)}
           >
-            <div style={{ width: 250 }}>
+            <div className="w-[90vw]  lg:w-[40vw] max-w-lg">
               <Cart />
             </div>
           </Drawer>
@@ -121,7 +121,7 @@ export default function RootLayout({ children }) {
               </div>
             </aside>
           </main>
-          <footer className="h-8 bg-sky-500 w-full"></footer>
+          <footer className="w-full"></footer>
         </body>
       </UserContextProvider>
     </html>

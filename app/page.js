@@ -13,6 +13,8 @@ const data = [
 import ProductCard from "@/components/productCard";
 import Hero from "@/components/hero";
 import Category from "@/components/category";
+import FeaturedProducts from "@/components/store/featuredProducts";
+import NewArrivals from "@/components/store/NewArrivals";
 const product = data.map((item) => {
   return <ProductCard item={item} />;
 });
@@ -35,8 +37,8 @@ export default function Page() {
       <Hero />
 
       <>
-        <HorizontalComp title={"New Arrivals"} array={product} />
-        <HorizontalComp title={"Featured Products"} array={product} />
+        <NewArrivals />
+        <FeaturedProducts />
         <HorizontalComp title={"Categories"} array={CategoryItem} />
       </>
     </section>
