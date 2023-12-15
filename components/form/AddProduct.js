@@ -71,10 +71,10 @@ function AddProduct() {
   return (
     <div className="w-full p-2 flex flex-col gap-3 ">
       <div className="w-full  flex border-grey justify-between px-4 ">
-        <p>{response}</p>
         <IconButton onClick={() => router.back()}>
           <ArrowBack />
         </IconButton>
+        <p>{response}</p>
         <button onClick={clearAllFields}>clear</button>
       </div>
       <div>
