@@ -1,11 +1,9 @@
+"use client";
 import Image from "next/image";
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import { useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import { ArrowBack, ExpandLess, ExpandMore } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 export default function ProductDetails({ item }) {
   const { name, price, image } = item || { name: "", price: "", image: "" };
   const [hidden, setHidden] = useState(true);
@@ -13,51 +11,32 @@ export default function ProductDetails({ item }) {
   const Description =
     "In product descriptions, it’s easy to fall into the trap of only describing the features of your products. But when you just list the features, you’re not actually helping your buyer understand how your product will help them.";
   return (
-    <div style={{ width: "100%", height: "100%", overflowY: "auto" }}>
-      <div style={{ height: 50, width: "100%", position: "absolute" }}>
+    <div className="h-full w-full p-4 relative ">
+      <div className="w-full absolute h-8">
         <IconButton onClick={() => router.back()}>
           <ArrowBack />
         </IconButton>
       </div>
-      <Card
-        variant="outlined"
-        style={{
-          paddingBottom: 10,
-        }}
-      >
-        <Image
-          style={{
-            width: "100%",
-            height: "auto",
-          }}
-          src={image || "/no_image.jpg"}
-          height={500}
-          width={500}
-          alt={name}
-        />
+      <div className="w-full p-2 md:flex  gap-2">
+        <div className="w-full flex justify-center">
+          <Image
+            className="w-auto max-w-sm h-auto max-h-sm"
+            src={image || "/no_image.jpg"}
+            height={500}
+            width={500}
+            alt={name}
+          />
+        </div>
 
-        <div style={{ padding: 10 }}>
-          <p style={{ fontWeight: "bold", fontSize: 20, padding: 5 }}>
-            {name} text for full name
-          </p>
-          <p style={{ fontWeight: "bold", fontSize: 18 }}>
-            ₦ {price} <del style={{ color: "grey", fontSize: 12 }}>₦ 1000</del>
+        <div className="flex flex-col justify-center p-2">
+          <p className="font-semibold text-xl">{name} text for full name</p>
+          <p className="text-lg font-bold">
+            ₦ {price} <del className="text-gray-400 text-sm">₦ 1000</del>
           </p>
           <div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
+            <div className="flex justify-between items-center">
               <p
-                style={{
-                  marginTop: 5,
-                  fontSize: 14,
-                  color: "grey",
-                  fontWeight: "bold",
-                }}
+                className="text-gray-600 font-semibold text-md"
                 onClick={() => setHidden(!hidden)}
               >
                 Description
@@ -69,33 +48,22 @@ export default function ProductDetails({ item }) {
 
             <p>{hidden ? Description.split(".")[0] : Description}</p>
           </div>
-          <div
-            style={{
-              display: "flex",
-              gap: 5,
-              alignItems: "center",
-              justifyContent: "center",
-              padding: 10,
-            }}
-          >
-            <Button
-              variant="contained"
-              color="secondary"
-
+          <div className="w-full flex flex-wrap justify-center gap-3 mt-2">
+            <button
+              className="p-2 rounded-lg bg-sky-700 w-44 h-12 text-white font-bold "
               // onClick={() => handleAdd(item)}
             >
               Add To Cart
-            </Button>
-            <Button
-              variant="outlined"
-              color="secondary"
+            </button>
+            <button
+              className="p-2 rounded-lg bg-sky-900 w-44 h-12 text-white font-bold "
               // onClick={() => handleAdd(item)}
             >
               Buy Now
-            </Button>
+            </button>
           </div>
         </div>
-      </Card>
+      </div>
     </div>
   );
 }

@@ -7,7 +7,7 @@ function HorizontalComp({ title, array }) {
           array.map((item, index) => (
             <div
               key={index}
-              className="min:w-28 min:h-28 snap-center rounded-md flex-shrink-0"
+              className="w-40 min:h-28 snap-center rounded-md flex-shrink-0"
             >
               {item}
             </div>
