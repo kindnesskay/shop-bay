@@ -29,6 +29,7 @@ export default function RootLayout({ children }) {
         <body className=" w-full max-w-7xl min-h-screen  relative overflow-x-hidden">
           <header>
             <title>Fruits website</title>
+
             <nav className="w-full flex gap-3 lg:justify-center justify-between items-center h-16 pl-4 ">
               <div className="flex gap-4 lg:hidden">
                 <IconButton
