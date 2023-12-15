@@ -6,16 +6,18 @@ function ProductCard({ item, handleAdd, linkRef }) {
     <div className="flex flex-col items-centers aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md xl:aspect-h-8 xl:aspect-w-7">
       <Link
         href={linkRef || "#"}
-        className="w-full justify-center flex  h-40 overflow-hidden rounded-md"
+        className="w-full justify-center flex   h-40 overflow-hidden rounded-md"
       >
-        <Image
-          className="h-auto w-auto max-h-40 max-w-full "
-          src={image || "/no_image.jpg"}
-          height={150}
-          width={150}
-          alt={name}
-          loading="lazy"
-        />
+        <div className="h-full w-full">
+          <Image
+            className="h-auto w-auto max-h-40 max-w-full "
+            src={image || "/no_image.jpg"}
+            height={150}
+            width={150}
+            alt={name}
+            loading="lazy"
+          />
+        </div>
       </Link>
       <div className="h-24 w-full flex flex-col items-center p-1">
         <p className="font-semibold ">{name}</p>
