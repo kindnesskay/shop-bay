@@ -16,6 +16,11 @@
 .border-grey {
   border: 1px solid rgb(194, 191, 191);
 }
+tr,
+td {
+  padding: 8px;
+  border: 1px solid gray;
+}
 
 .loader {
   animation: rotate 0.8s infinite;

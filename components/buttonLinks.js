@@ -27,7 +27,7 @@ export const SignUpButton = () => {
 export const ProfileButton = () => {
   return (
     <>
-      <Link href={"/profile"} className="w-full text-center">
+      <Link href={"/user/profile"} className="w-full text-center">
         profile
       </Link>
     </>
