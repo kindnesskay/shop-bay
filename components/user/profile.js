@@ -4,17 +4,44 @@ import { Settings } from "@mui/icons-material";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
+import Link from "next/link";
+import Loading from "../loader";
 export default function Profile() {
   const { user } = useContext(UserContext);
+  const { isLoading, setIsLoading } = useContext(UserContext);
   const [userEmail, setUserEmail] = useState("");
   useEffect(() => {
-    setUserEmail(user.email);
-  }, []);
+    setTimeout(() => {
+      if (user !== null) {
+        setUserEmail(user.email);
+      }
+      setIsLoading(false);
+    }, 1000);
+  }, [isLoading]);
   return (
-    <div className="h-full ">
-      <ProfileHeader userEmail={userEmail} />
-      <Navigations />
-    </div>
+    <section className="h-full w-full">
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div className="h-full w-full">
+          {user !== null ? (
+            <div className="h-full ">
+              <ProfileHeader userEmail={userEmail} />
+              <Navigations />
+            </div>
+          ) : (
+            <div className="w-full h-full flex p-2 flex-col items-center gap-3">
+              <p className="text-gray-400 font-semibold text-sm">
+                You are not logged in
+              </p>
+              <Link href="/auth/login" onClick={() => setIsLoading(true)}>
+                Sign in
+              </Link>
+            </div>
+          )}
+        </div>
+      )}
+    </section>
   );
 }
 

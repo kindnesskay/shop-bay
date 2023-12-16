@@ -15,7 +15,9 @@ function Login() {
   const { isLoading, setIsLoading } = useContext(UserContext);
   const router = useRouter();
   useEffect(() => {
-    setIsLoading(false);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
     if (user !== null) {
       router.push("/profile");
     }
@@ -40,7 +42,7 @@ function Login() {
       {isLoading ? (
         <Loading />
       ) : (
-        <section className="h-full flex justify-center items-center p-2">
+        <section className="h-full flex justify-center i p-2">
           <form className="flex flex-col gap-4 w-full max-w-sm">
             <h4 className="text-center text-4xl font-semibold">Welcome Back</h4>
             <label htmlFor="email" className="text-2xl font-semibold ">
@@ -75,7 +77,6 @@ function Login() {
             <p className="text-center text-lg text-gray-800">
               Dont have an account?{" "}
               <Link
-                onClick={() => setIsLoading(true)}
                 href="/auth/signup"
                 className="underline underline-offset-4"
               >

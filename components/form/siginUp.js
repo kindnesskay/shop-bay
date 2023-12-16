@@ -15,7 +15,9 @@ function SignUp() {
   const { isLoading, setIsLoading } = useContext(UserContext);
   const router = useRouter();
   useEffect(() => {
-    setIsLoading(false);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
     if (user !== null) {
       router.push("/profile");
     }
@@ -89,11 +91,7 @@ function SignUp() {
             </button>
             <p className="text-center text-xl text-sm text-gray-800">
               Already have an Account?{" "}
-              <Link
-                onClick={() => setIsLoading(true)}
-                href="/auth/login"
-                className="underline underline-offset-4"
-              >
+              <Link href="/auth/login" className="underline underline-offset-4">
                 Login
               </Link>
             </p>
