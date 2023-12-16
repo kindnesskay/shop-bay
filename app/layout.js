@@ -4,7 +4,7 @@ import Link from "next/link";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import { Close, Menu } from "@mui/icons-material";
-import { Suspense, useState } from "react";
+import { useEffect, useState } from "react";
 import Cart from "@/components/cart";
 import { UserContextProvider } from "./context/usercontext";
 import Profilenav from "@/components/profilenav";
@@ -19,9 +19,15 @@ import {
   ShoppingCartButton,
 } from "../components/buttonLinks";
 import logo from "../assets/logo.svg";
+import { usePathname } from "next/navigation";
 export default function RootLayout({ children }) {
   const [menuState, setMenuState] = useState(false);
   const [cartState, setCartState] = useState(false);
+  const pathname = usePathname();
+  useEffect(() => {
+    setCartState(false);
+    setMenuState(false);
+  }, [pathname]);
 
   return (
     <html lang="en" className="w-full flex min-h-screen justify-center">

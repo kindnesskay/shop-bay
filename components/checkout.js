@@ -6,30 +6,47 @@ import {
 } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Image from "next/image";
+import { UserContext } from "@/app/context/usercontext";
+import Loading from "./loader";
 function Checkout({ subtotal, deliveryFee }) {
   const router = useRouter();
   const [success, setSuccess] = useState(false);
+  const { isLoading, setIsLoading } = useContext(UserContext);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  }, [isLoading]);
   return (
     <>
-      {!success ? (
-        <div className="w-full p-2">
-          <div className="flex gap-8  p-4 items-center h-4">
-            <IconButton
-              onClick={() => {
-                router.back();
-              }}
-            >
-              <ArrowBack />
-            </IconButton>
-            <h3>Checkout</h3>
-          </div>
-          <Summary subtotal={subtotal || 0} deliveryFee={deliveryFee || 10} />
-          <Payment handlePay={() => setSuccess(!success)} />
-        </div>
+      {isLoading ? (
+        <Loading />
       ) : (
-        <PaymentSuccessfull />
+        <>
+          {!success ? (
+            <div className="w-full p-2">
+              <div className="flex gap-8  p-4 items-center h-4">
+                <IconButton
+                  onClick={() => {
+                    router.back();
+                  }}
+                >
+                  <ArrowBack />
+                </IconButton>
+                <h3>Checkout</h3>
+              </div>
+              <Summary
+                subtotal={subtotal || 0}
+                deliveryFee={deliveryFee || 10}
+              />
+              <Payment handlePay={() => setSuccess(!success)} />
+            </div>
+          ) : (
+            <PaymentSuccessfull />
+          )}
+        </>
       )}
     </>
   );

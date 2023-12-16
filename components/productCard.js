@@ -6,9 +6,9 @@ function ProductCard({ item, handleAdd, linkRef }) {
     <div className="flex flex-col items-centers aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md xl:aspect-h-8 xl:aspect-w-7">
       <Link
         href={linkRef || "#"}
-        className="w-full justify-center flex   h-40 overflow-hidden rounded-md"
+        className="w-full justify-center flex items-center h-40 overflow-hidden rounded-md"
       >
-        <div className="h-full w-full">
+        <div>
           <Image
             className="h-auto w-auto max-h-40 max-w-full "
             src={image || "/no_image.jpg"}
