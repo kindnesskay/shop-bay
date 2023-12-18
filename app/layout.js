@@ -30,9 +30,9 @@ export default function RootLayout({ children }) {
   }, [pathname]);
 
   return (
-    <html lang="en" className="w-full flex min-h-screen justify-center">
+    <html lang="en" className="w-full flex  min-h-screen justify-center">
       <UserContextProvider>
-        <body className=" w-full max-w-7xl min-h-screen  relative overflow-x-hidden">
+        <body className=" w-full max-w-7xl relative overflow-x-hidden">
           <header>
             <title>Fruits website</title>
 
@@ -96,7 +96,7 @@ export default function RootLayout({ children }) {
             </div>
           </Drawer>
 
-          <main className="h-full justify-between flex h-full">
+          <main className="justify-between h-full ">
             <aside className="h-full hidden w-1/5 lg:block">
               <div className="relative h-full w-full">
                 <div className="flex gap-3">
@@ -120,7 +120,7 @@ export default function RootLayout({ children }) {
                 </div>
               </div>
             </aside>
-            <section className="h-full w-full lg:w-4/5">{children}</section>
+            <section className="w-full lg:w-4/5">{children}</section>
             <aside className="h-full w-1/5 hidden lg:block">
               <div className="flex flex-col gap-2 red-borders p-3">
                 <ShoppingCartButton onClick={() => setCartState(true)} />
@@ -128,7 +128,7 @@ export default function RootLayout({ children }) {
               </div>
             </aside>
           </main>
-          <footer className="w-full"></footer>
+          <footer className="w-full h-40 bg-black"></footer>
         </body>
       </UserContextProvider>
     </html>

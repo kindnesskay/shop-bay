@@ -33,12 +33,12 @@ function AddProduct() {
     setResponse("loading..");
     try {
       await addDoc(collectionRef, {
-        name: title,
-        price: price,
-        userID: Auth?.currentUser?.uid,
-        image: imageUrl,
-        description: description,
-        imageName: uid_string + image.name,
+        name: title.trim(),
+        price: price.trim(),
+        userID: Auth?.currentUser?.uid.trim(),
+        image: imageUrl.trim(),
+        description: description.trim(),
+        imageName: uid_string + image.name.trim(),
       });
       setResponse("success");
       clearAllFields();

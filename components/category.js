@@ -4,9 +4,9 @@ function Category({ image, location, name }) {
   return (
     <Link
       href={location}
-      className="flex flex-col items-center pt-2 w-36 h-36 "
+      className="flex flex-col items-center  pt-2 w-36 h-36 "
     >
-      <div>
+      <div className="hover:scale-125">
         <Image src={image} alt={name} height={100} width={100} />
       </div>
       <p className="text-center font-semibold">{name}</p>

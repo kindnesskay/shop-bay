@@ -11,7 +11,6 @@ export function UserContextProvider({ children }) {
   const pathname = usePathname();
   useEffect(() => {
     setIsLoading(true);
-    console.log(pathname);
   }, [pathname]);
   useEffect(() => {
     onAuthStateChanged(Auth, (user) => {

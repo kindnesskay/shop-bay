@@ -8,6 +8,7 @@ const data = [
   { id: 3, name: "Hoddie", price: 2500, image: "/assets/icons/hoddie.png" },
   { id: 4, name: "Plane", price: 3500, image: "/assets/icons/plane.png" },
   { id: 5, name: "Food", price: 5300, image: "/assets/icons/food.png" },
+  { id: 5, name: "Kids", price: 5300, image: "/assets/icons/plane.png" },
 ];
 
 import ProductCard from "@/components/productCard";
@@ -18,12 +19,12 @@ import NewArrivals from "@/components/store/NewArrivals";
 import { UserContext } from "./context/usercontext";
 import { useContext, useEffect } from "react";
 import Loading from "@/components/loader";
+import Categories from "@/components/store/Categories";
+import SearchResult from "@/components/store/SearchResult";
 const product = data.map((item) => {
   return <ProductCard item={item} />;
 });
-const CategoryItem = data.map((item) => {
-  return <Category location={"#"} image={item.image} name={item.name} />;
-});
+
 export default function Page() {
   const { isLoading, setIsLoading } = useContext(UserContext);
   useEffect(() => {
@@ -36,24 +37,10 @@ export default function Page() {
       {isLoading ? (
         <Loading />
       ) : (
-        <section className="w-full h-full flex items-center flex-col gap-4 space-between p-2">
-          <div className="w-full h-16  flex relative rounded-lg overflow-hidden pl-8 border-solid border border-gray-200">
-            <span className="absolute text-gray-400 left-0 h-full w-8 flex items-center">
-              <Search />
-            </span>
-            <input
-              className="h-full w-full"
-              type="search"
-              placeholder="search products , brands and categories"
-            />
-          </div>
+        <section className="w-full flex items-center flex-col gap-4 space-between p-2">
+          <SearchResult />
           <Hero />
-
-          <>
-            <NewArrivals />
-            <FeaturedProducts />
-            <HorizontalComp title={"Categories"} array={CategoryItem} />
-          </>
+          <Categories data={data} />
         </section>
       )}
     </>
