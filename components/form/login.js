@@ -19,7 +19,7 @@ function Login() {
       setIsLoading(false);
     }, 1000);
     if (user !== null) {
-      router.push("/profile");
+      router.push("/user/profile");
     }
   }, [user]);
   const handleSignIn = async (e) => {
