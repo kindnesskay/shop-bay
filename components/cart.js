@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import CartItem from "./cartItem";
 import { getCartItems, editCart, deleteCartItem } from "@/tools/cartActions";
 import { useRouter } from "next/navigation";
+import { ShopContext } from "@/app/context/usercontext";
 function Cart() {
   const db_name = "fruits_unique";
   const [cartArray, setCartArray] = useState([]);
+
   const [total, setTotal] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
   const currency = "₦";
@@ -13,14 +15,11 @@ function Cart() {
     let items = getCartItems(db_name);
     if (!items) return;
     setCartArray(items);
-    let totalProducts = [];
-    items.map((item) => {
-      totalProducts = [
-        ...totalProducts,
-        { id: item.id, total: item.quantity * Number(item.price) },
-      ];
+    const products = items.map((item) => {
+      return { id: item.id, total: item.price * item.quantity };
     });
-    setTotal(totalProducts);
+
+    setTotal(products);
   }, []);
   const editQuantity = (id, count) => {
     if (count == 0) {
@@ -35,9 +34,12 @@ function Cart() {
   };
 
   useEffect(() => {
+    if (total.length < 1) return;
+
     const totalAmountPrice = total.reduce((accumulator, currentObject) => {
       return accumulator + Number(currentObject.total);
     }, 0);
+
     setTotalAmount(totalAmountPrice);
   }, [total]);
 
@@ -52,14 +54,13 @@ function Cart() {
     }
 
     let items = total.filter((item) => {
-      return id != item.id;
+      return id !== item.id;
     });
 
     if (items) {
       setTotal([...items, { id: id, total: amount }]);
     }
-
-    if (!items.length) {
+    if (items.length > 1) {
       setTotal([...total, { id: id, total: amount }]);
     }
   };

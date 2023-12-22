@@ -8,11 +8,7 @@ function Page() {
     const getTotal = sessionStorage.getItem("cartTotal");
     setTotal(Number(getTotal));
   }, []);
-  return (
-    <>
-      <Checkout subtotal={total} />
-    </>
-  );
+  return <Checkout subtotal={total} />;
 }
 
 export default Page;

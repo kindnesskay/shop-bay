@@ -1,10 +1,6 @@
 import Profile from "@/components/user/profile";
 function page() {
-  return (
-    <div>
-      <Profile />
-    </div>
-  );
+  return <Profile />;
 }
 
 export default page;

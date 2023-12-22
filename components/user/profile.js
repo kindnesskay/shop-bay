@@ -1,28 +1,24 @@
 "use client";
-import { UserContext } from "@/app/context/usercontext";
+import { ShopContext } from "@/app/context/usercontext";
 import { Settings } from "@mui/icons-material";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import Link from "next/link";
-import Loading from "../loader";
+import { Auth } from "@/config/firebase";
+import { signOut } from "firebase/auth";
 export default function Profile() {
-  const { user } = useContext(UserContext);
-  const { isLoading, setIsLoading } = useContext(UserContext);
+  const { user } = useContext(ShopContext);
   const [userEmail, setUserEmail] = useState("");
   useEffect(() => {
-    setTimeout(() => {
-      if (user !== null) {
-        setUserEmail(user.email);
-      }
-      setIsLoading(false);
-    }, 1000);
-  }, [isLoading]);
+    if (user !== null) {
+      setUserEmail(user.email);
+    }
+  }, []);
+
   return (
     <section className="h-full w-full">
-      {isLoading ? (
-        <Loading />
-      ) : (
+      {
         <div className="h-full w-full">
           {user !== null ? (
             <div className="h-full ">
@@ -40,7 +36,7 @@ export default function Profile() {
             </div>
           )}
         </div>
-      )}
+      }
     </section>
   );
 }
@@ -49,15 +45,20 @@ function ProfileHeader({ userEmail }) {
   return (
     <div>
       <div className="h-20 w-full p-2 px-4 flex justify-between">
-        <div className="flex  flex-col gap-3 h-fit items-center">
+        <div className="flex  flex-col gap-2 h-fit items-center">
           <div className="rounded-full h-fit overflow-hidden w-fit">
             <Image src={"/no_image.jpg"} height={48} width={48} />
           </div>
           <p className="text-xs ">{userEmail}</p>
         </div>
-        <div className="flex gap-3 items-center w-fit">
-          <p className="text-gray-500 text-lg">Settings</p>
-          <Settings />
+        <div className="flex flex-col  p-2 gap-1 justify-center w-fit">
+          <p className="text-gray-500 text-lg">
+            Settings <Settings />
+          </p>
+
+          <button onClick={() => signOut(Auth)} className="p-2">
+            SignOut
+          </button>
         </div>
       </div>
     </div>
