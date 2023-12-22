@@ -1,10 +1,6 @@
 import Login from "@/components/form/login";
 function Page() {
-  return (
-    <>
-      <Login />
-    </>
-  );
+  return <Login />;
 }
 
 export default Page;
