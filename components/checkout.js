@@ -1,54 +1,26 @@
 "use client";
-import {
-  ArrowBack,
-  KeyboardArrowDown,
-  KeyboardArrowUp,
-} from "@mui/icons-material";
+import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
-import { useRouter } from "next/navigation";
-import { useContext, useEffect, useState } from "react";
+
+import { useState } from "react";
 import Image from "next/image";
-import { UserContext } from "@/app/context/usercontext";
-import Loading from "./loader";
 function Checkout({ subtotal, deliveryFee }) {
-  const router = useRouter();
   const [success, setSuccess] = useState(false);
-  const { isLoading, setIsLoading } = useContext(UserContext);
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
-  }, [isLoading]);
+
   return (
-    <>
-      {isLoading ? (
-        <Loading />
+    <div className="w-full">
+      {!success ? (
+        <div className="w-full p-2">
+          <div className="flex gap-8  p-4 items-center h-4">
+            <h3 className="font-bold text-lg">Checkout</h3>
+          </div>
+          <Summary subtotal={subtotal || 0} deliveryFee={deliveryFee || 10} />
+          <Payment handlePay={() => setSuccess(!success)} />
+        </div>
       ) : (
-        <>
-          {!success ? (
-            <div className="w-full p-2">
-              <div className="flex gap-8  p-4 items-center h-4">
-                <IconButton
-                  onClick={() => {
-                    router.back();
-                  }}
-                >
-                  <ArrowBack />
-                </IconButton>
-                <h3>Checkout</h3>
-              </div>
-              <Summary
-                subtotal={subtotal || 0}
-                deliveryFee={deliveryFee || 10}
-              />
-              <Payment handlePay={() => setSuccess(!success)} />
-            </div>
-          ) : (
-            <PaymentSuccessfull />
-          )}
-        </>
+        <PaymentSuccessfull />
       )}
-    </>
+    </div>
   );
 }
 export default Checkout;
@@ -120,14 +92,12 @@ function Payment({ handlePay }) {
 }
 
 function PaymentSuccessfull() {
-  const router = useRouter();
   return (
-    <div className="h-full w-full flex flex-col gap-4">
+    <div className="h-full w-full flex flex-col gap-4 pt-8">
       <div className="flex p-2 gap-4 items-center">
-        <IconButton onClick={() => router.back()}>
-          <ArrowBack />
-        </IconButton>
-        <h4 className="font-bold text-xl">Payment confirmation</h4>
+        <h4 className="font-bold text-xl text-center w-full">
+          Payment confirmation
+        </h4>
       </div>
       <div className="flex justify-center ">
         <Image

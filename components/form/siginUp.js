@@ -3,16 +3,17 @@ import { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import { Auth } from "@/config/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { UserContext } from "@/app/context/usercontext";
+
 import { useRouter } from "next/navigation";
 import Loading from "../loader";
+import { ShopContext } from "@/app/context/usercontext";
 function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [verifyPwd, setVerfyPwd] = useState("");
   const [pwd_error, setPwdError] = useState("");
-  const { user, setUser } = useContext(UserContext);
-  const { isLoading, setIsLoading } = useContext(UserContext);
+  const { user, setUser, isLoading, setIsLoading } = useContext(ShopContext);
+
   const router = useRouter();
   useEffect(() => {
     setTimeout(() => {
