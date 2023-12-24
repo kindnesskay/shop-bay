@@ -1,6 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
-import BlurImage from "./blurImage";
+import BlurImage from "../blurImage";
 
 function ProductCard({ item, handleAdd, linkRef }) {
   const { name, price, image } = item;

@@ -1,26 +1,21 @@
 import { useContext, useEffect, useState } from "react";
-import CartItem from "./cartItem";
+import CartItem from "../cartItem";
 import { getCartItems, editCart, deleteCartItem } from "@/tools/cartActions";
 import { useRouter } from "next/navigation";
 import { ShopContext } from "@/app/context/usercontext";
 function Cart() {
   const db_name = "fruits_unique";
-  const [cartArray, setCartArray] = useState([]);
-
+  const { cartArray, setCartArray } = useContext(ShopContext);
   const [total, setTotal] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
   const currency = "₦";
   const router = useRouter();
   useEffect(() => {
-    let items = getCartItems(db_name);
-    if (!items) return;
-    setCartArray(items);
-    const products = items.map((item) => {
+    const products = cartArray.map((item) => {
       return { id: item.id, total: item.price * item.quantity };
     });
-
     setTotal(products);
-  }, []);
+  }, [cartArray]);
   const editQuantity = (id, count) => {
     if (count == 0) {
       setCartArray(

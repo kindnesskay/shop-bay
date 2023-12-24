@@ -1,5 +1,5 @@
 "use client";
-import Checkout from "@/components/checkout";
+import Checkout from "@/components/store/checkout";
 import { useEffect, useState } from "react";
 
 function Page() {

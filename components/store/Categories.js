@@ -1,4 +1,4 @@
-import Category from "../category";
+import Category from "./category";
 const data = [
   {
     id: 1,
@@ -38,7 +38,7 @@ const data = [
 ];
 export default function Categories() {
   return (
-    <div className="grid gap-4 grid-cols-1 xxs:grid-cols-2  w-full xs:grid-cols-3 sm:grid-cols-4 md:gap-2 lg:gap-1.5">
+    <div className="grid gap-4 grid-cols-1 xxs:grid-cols-2 px-8  w-full xs:grid-cols-3 sm:grid-cols-4 md:gap-2 lg:gap-1.5">
       {data &&
         data.map((item, index) => {
           return (

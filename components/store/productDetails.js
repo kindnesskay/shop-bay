@@ -2,9 +2,9 @@
 import IconButton from "@mui/material/IconButton";
 import { ExpandLess, ExpandMore, Opacity } from "@mui/icons-material";
 import { useContext, useEffect, useState } from "react";
-import BlurImage from "./blurImage";
+import BlurImage from "../blurImage";
 import { ShopContext } from "@/app/context/usercontext";
-import Loading from "./loader";
+import Loading from "../loader";
 
 export default function ProductDetails({ handleAdd, item }) {
   const [hidden, setHidden] = useState(false);

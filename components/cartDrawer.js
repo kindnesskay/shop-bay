@@ -3,7 +3,7 @@ import { ShopContext } from "@/app/context/usercontext";
 import { Close } from "@mui/icons-material";
 import Drawer from "@mui/material/Drawer";
 import { useContext } from "react";
-import Cart from "./cart";
+import Cart from "./store/cart";
 function CartDrawer() {
   const { cartState, setCartState } = useContext(ShopContext);
   return (
