@@ -4,7 +4,7 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import HorizontalComp from "../horizontalComp";
 import { db } from "@/config/firebase";
 import { useEffect, useState } from "react";
-import ProductCard from "../productCard";
+import ProductCard from "./productCard";
 function NewArrivals() {
   const dataRef = collection(db, "fruits");
   const [data, setData] = useState([]);

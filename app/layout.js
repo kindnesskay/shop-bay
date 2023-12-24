@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
           <CartDrawer />
           <MenuDrawer />
           <main className="w-screen justify-between min-h-full pt-16 flex gap-4 ">
-            <section className="w-full  h-full flex">{children}</section>
+            <section className="w-full ">{children}</section>
           </main>
           <footer className="w-full h-32 bg-black"></footer>
         </body>

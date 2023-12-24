@@ -13,7 +13,7 @@ export function ShopContextProvider({ children }) {
   const [cartState, setCartState] = useState(false);
   const [menuState, setMenuState] = useState(false);
   const [newCartItem, setNewCartItem] = useState(null);
-
+  const [cartArray, setCartArray] = useState([]);
   const pathname = usePathname();
   const db_name = "fruits_unique";
   useEffect(() => {
@@ -21,6 +21,7 @@ export function ShopContextProvider({ children }) {
     const handleAddToCart = () => {
       newCartItem.quantity = 1;
       AddToCart(db_name, newCartItem);
+      setCartArray([...cartArray, newCartItem]);
     };
 
     handleAddToCart();
@@ -38,6 +39,9 @@ export function ShopContextProvider({ children }) {
     });
   }, [user]);
 
+  useEffect(() => {
+    setItemsInCart(cartArray.length);
+  }, [cartArray]);
   return (
     <ShopContext.Provider
       value={{
@@ -52,6 +56,8 @@ export function ShopContextProvider({ children }) {
         setNewCartItem,
         menuState,
         setMenuState,
+        cartArray,
+        setCartArray,
       }}
     >
       {children}

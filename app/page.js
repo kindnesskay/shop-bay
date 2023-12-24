@@ -1,11 +1,11 @@
-import Hero from "@/components/hero";
+import Hero from "@/components/store/hero";
 import Categories from "@/components/store/Categories";
 
 export default function Page() {
   return (
-    <section className="w-full h-fit">
+    <section className="w-full">
       <Hero />
-      <div className="h-fit w-full pt-8">
+      <div className="w-full red-border pt-8">
         <Categories />
       </div>
     </section>

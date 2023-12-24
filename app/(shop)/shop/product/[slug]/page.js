@@ -1,5 +1,5 @@
 "use client";
-import ProductDetails from "@/components/productDetails";
+import ProductDetails from "@/components/store/productDetails";
 import { db } from "@/config/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState, useContext } from "react";
