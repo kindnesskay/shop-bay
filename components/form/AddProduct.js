@@ -202,6 +202,7 @@ function ProductCategory({ getCategory, category }) {
                 key={index}
                 onClick={() => {
                   getCategory(item.toLowerCase());
+                  setLIst(false)
                 }}
               >
                 {item}

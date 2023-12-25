@@ -4,7 +4,7 @@ import BlurImage from "../blurImage";
 function ProductCard({ item, handleAdd, linkRef }) {
   const { name, price, image } = item;
   return (
-    <div className="flex flex-col items-centers aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md xl:aspect-h-8 xl:aspect-w-7">
+    <div className="flex flex-col  p-1 bg-slate-200 items-centers aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md xl:aspect-h-8 xl:aspect-w-7">
       <Link
         href={linkRef || "#"}
         className="w-full justify-center flex items-center h-40 overflow-hidden rounded-md"
@@ -17,7 +17,7 @@ function ProductCard({ item, handleAdd, linkRef }) {
         <p className="font-semibold ">{name}</p>
         <p className="font-semibold">${price}</p>
         <button
-          className="p-1 border-solid border rounded-lg h-12 font-medium border-gray-400 text-black w-full max-w-xs"
+          className="p-1 border-solid border rounded-lg h-12 bg-sky-800 hover:bg-sky-900 text-white font-medium border-gray-40 w-full max-w-xs"
           onClick={() => handleAdd(item)}
         >
           Add to cart
