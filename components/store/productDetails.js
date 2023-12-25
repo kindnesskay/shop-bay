@@ -5,11 +5,14 @@ import { useContext, useEffect, useState } from "react";
 import BlurImage from "../blurImage";
 import { ShopContext } from "@/app/context/usercontext";
 import Loading from "../loader";
-
+import { KeyboardArrowLeft } from "@mui/icons-material";
+import Image from "next/image";
 export default function ProductDetails({ handleAdd, item }) {
   const [hidden, setHidden] = useState(false);
   const [visible, setVisible] = useState(false);
   const { isLoading, setIsLoading } = useContext(ShopContext);
+  
+  const [fullView, setFullView] = useState(false);
   useEffect(() => {
     setTimeout(() => {
       setVisible(true);
@@ -22,7 +25,7 @@ export default function ProductDetails({ handleAdd, item }) {
         <Loading />
       ) : (
         visible && (
-          <div className="h-full w-full p-4">
+          <div className="h-full w-full p-4 ">
             <div className="w-full p-2 md:flex h-fit gap-2 justify-center">
               <div className="w-full flex md:w-1/2 md:h-full h-60 max-h-sm justify-center items-center">
                 <div
@@ -32,10 +35,30 @@ export default function ProductDetails({ handleAdd, item }) {
                   }}
                   className="w-full flex md:w-1/2 md:h-full max-h-sm justify-center items-center"
                 >
-                  <BlurImage image={item.image} />
+                  <BlurImage image={item.image} onClick={()=>setFullView(true)}/>
                 </div>
               </div>
-
+              {fullView && !isLoading && (
+        <div
+          
+          className="absolute z-10 h-screen w-screen backdrop-blur-sm  top-16 left-0 justify-center flex flex-col items-center  "
+        >
+          <div className="w-full">
+            <button onClick={()=>setFullView(false)} className="p-2 mt-1 items-center text-white absolute h-12 bg-sky-800 rounded-xl top-0 flex justify-start left-0">
+              <KeyboardArrowLeft />
+            </button>
+          </div>
+          <div className="w-full h-2/3 flex justify-center">
+            <Image
+              src={item.image}
+              height={500}
+              width={500}
+              className="h-auto  w-auto max-w-full max-h-full"
+            />
+          </div>
+        </div>
+      )}
+            
               <div className="flex flex-col justify-center  p-2 md:w-1/2 md:max-w-sm">
                 <p className="font-semibold text-xl">{name}</p>
                 <p className="text-lg font-bold">

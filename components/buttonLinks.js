@@ -15,8 +15,8 @@ export function HomeButton() {
 }
 export function LinkButton({ link, icon, title }) {
   return (
-    <Link href={link} className="w-full text-center font-semibold">
-      <button className="w-full p-4 border-gray rounded-md">
+    <Link href={link} className="w-full text-center font-semibold ">
+      <button className="w-full p-4 border-gray rounded-md hover:bg-sky-600 hover:text-white">
         {icon} {title}
       </button>
     </Link>
