@@ -42,7 +42,7 @@ function Login() {
       {isLoading ? (
         <Loading />
       ) : (
-        <section className="h-screen flex justify-center items-center w-full p-2">
+        <section className="flex justify-center items-center w-full p-2">
           <form className="flex flex-col gap-4 w-full max-w-sm">
             <h4 className="text-center text-4xl font-semibold">Welcome Back</h4>
             <label htmlFor="email" className="text-2xl font-semibold ">

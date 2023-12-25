@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
           <main className="w-screen justify-between min-h-full pt-16 flex gap-4 ">
             <section className="w-full ">{children}</section>
           </main>
-          <footer className="w-full h-32 bg-black"></footer>
+          <footer className="h-12 bg-sky-950 "> </footer>
         </body>
       </ShopContextProvider>
     </html>

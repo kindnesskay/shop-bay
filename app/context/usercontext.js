@@ -31,6 +31,7 @@ export function ShopContextProvider({ children }) {
     setIsLoading(true);
     setCartState(false);
     setMenuState(false);
+    window.scrollTo(0,0)
   }, [pathname]);
 
   useEffect(() => {
