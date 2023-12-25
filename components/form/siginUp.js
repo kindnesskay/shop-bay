@@ -48,8 +48,8 @@ function SignUp() {
       {isLoading ? (
         <Loading />
       ) : (
-        <section className="w-full flex justify-center h-full items-center p-2">
-          <form className="flex flex-col gap-4 w-full max-w-sm">
+        <section className="p-2 flex justify-center">
+          <form className="flex flex-col gap-4 w-full p-2 max-w-sm">
             <h4 className="text-center text-4xl font-semibold">Hi,There</h4>
 
             <label htmlFor="email" className="text-2xl font-semibold ">
