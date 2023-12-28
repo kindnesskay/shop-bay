@@ -12,11 +12,12 @@ function Login() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const { user, setUser, isLoading, setIsLoading } = useContext(ShopContext);
-
+  const [visible,setVisible]=useState(false)
   const router = useRouter();
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
+      setVisible(true)
     }, 1000);
     if (user !== null) {
       router.push("/user/profile");
@@ -42,6 +43,7 @@ function Login() {
       {isLoading ? (
         <Loading />
       ) : (
+        visible &&
         <section className="flex justify-center items-center w-full p-2">
           <form className="flex flex-col gap-4 w-full max-w-sm">
             <h4 className="text-center text-4xl font-semibold">Welcome Back</h4>
