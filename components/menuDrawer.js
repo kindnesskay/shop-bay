@@ -1,5 +1,5 @@
 "use client";
-import { ShopContext } from "@/app/context/usercontext";
+import { ShopContext } from "@/context/usercontext";
 import { Close, Person, Shop2 } from "@mui/icons-material";
 import Drawer from "@mui/material/Drawer";
 import { useContext } from "react";

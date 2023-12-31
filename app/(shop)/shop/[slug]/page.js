@@ -2,7 +2,7 @@
 import { db } from "@/config/firebase";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { useEffect, useState, useContext } from "react";
-import { ShopContext } from "@/app/context/usercontext";
+import { ShopContext } from "@/context/usercontext";
 import ProductCard from "@/components/store/productCard";
 import Loading from "@/components/loader";
 function Page({ params }) {
