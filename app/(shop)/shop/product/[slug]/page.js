@@ -3,7 +3,7 @@ import ProductDetails from "@/components/store/productDetails";
 import { db } from "@/config/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState, useContext } from "react";
-import { ShopContext } from "@/app/context/usercontext";
+import { ShopContext } from "@/context/usercontext";
 function Page({ params }) {
   const [product, setProduct] = useState([]);
   const { setNewCartItem } = useContext(ShopContext);

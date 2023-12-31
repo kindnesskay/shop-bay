@@ -6,7 +6,7 @@ export default function BlurImage({ image, height, width, alt,onClick }) {
   
  
   return (
-    <div className="w-full flex justify-center overflow-hidden rounded-lg h-40">
+    <div className="w-full flex justify-center overflow-hidden rounded-lg">
       <Image
       onClick={onClick}
         alt={alt || "image"}
@@ -15,7 +15,7 @@ export default function BlurImage({ image, height, width, alt,onClick }) {
         width={width || 200}
         loading="lazy"
         className={`
-              duration-700 ease-in-out group-hover:opacity-75 h-auto w-auto max-h-[160px]
+              duration-700 ease-in-out group-hover:opacity-75 h-auto w-auto max-h-full
               ${
                 isLoading
                   ? "scale-110 blur-2xl grayscale"

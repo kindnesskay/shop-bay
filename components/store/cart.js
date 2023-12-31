@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import CartItem from "../cartItem";
 import { getCartItems, editCart, deleteCartItem } from "@/tools/cartActions";
 import { useRouter } from "next/navigation";
-import { ShopContext } from "@/app/context/usercontext";
+import { ShopContext } from "@/context/usercontext";
 function Cart() {
   const db_name = "fruits_unique";
   const { cartArray, setCartArray } = useContext(ShopContext);

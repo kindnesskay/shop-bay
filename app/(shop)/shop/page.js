@@ -3,7 +3,7 @@ import ProductCard from "@/components/store/productCard";
 import { useContext, useEffect, useState } from "react";
 import { db } from "@/config/firebase";
 import { getDocs, collection } from "firebase/firestore";
-import { ShopContext } from "@/app/context/usercontext";
+import { ShopContext } from "@/context/usercontext";
 import Loading from "@/components/loader";
 
 const dataItems = [

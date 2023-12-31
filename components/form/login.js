@@ -4,7 +4,7 @@ import Link from "next/link";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Auth } from "@/config/firebase";
 import { useRouter } from "next/navigation";
-import { ShopContext } from "@/app/context/usercontext";
+import { ShopContext } from "@/context/usercontext";
 import Loading from "../loader";
 function Login() {
   const [email, setEmail] = useState("");

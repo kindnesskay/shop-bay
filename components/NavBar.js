@@ -1,5 +1,5 @@
 "use client";
-import { ShopContext } from "@/app/context/usercontext";
+import { ShopContext } from "@/context/usercontext";
 import { useContext } from "react";
 import { Menu, ShoppingCart } from "@mui/icons-material";
 import Link from "next/link";

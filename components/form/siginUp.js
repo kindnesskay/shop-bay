@@ -6,7 +6,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 
 import { useRouter } from "next/navigation";
 import Loading from "../loader";
-import { ShopContext } from "@/app/context/usercontext";
+import { ShopContext } from "@/context/usercontext";
 function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

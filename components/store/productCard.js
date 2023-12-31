@@ -1,5 +1,6 @@
 import Link from "next/link";
 import BlurImage from "../blurImage";
+import Image from "next/image";
 
 function ProductCard({ item, handleAdd, linkRef }) {
   const { name, price, image } = item;
@@ -10,7 +11,7 @@ function ProductCard({ item, handleAdd, linkRef }) {
         className="w-full justify-center flex items-center h-40 overflow-hidden rounded-md"
       >
         <div>
-          <BlurImage image={image} alt={name} />
+          <Image height={200} width={200} alt={name} src={image} className="w-auto h-auto"/>
         </div>
       </Link>
       <div className="h-24 w-full flex flex-col items-center p-1">

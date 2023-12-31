@@ -1,5 +1,5 @@
 "use client";
-import { ShopContext } from "@/app/context/usercontext";
+import { ShopContext } from "@/context/usercontext";
 import { Settings } from "@mui/icons-material";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
