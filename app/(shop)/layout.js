@@ -5,7 +5,7 @@ import { ArrowBack } from "@mui/icons-material";
 function Layout({ children }) {
   const router = useRouter();
   return (
-    <div className="w-screen">
+    <div className="w-full h-full">
       <div className="w-full  p-2">
         <button onClick={() => router.back()}>
           <ArrowBack />

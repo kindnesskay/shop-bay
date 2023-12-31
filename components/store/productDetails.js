@@ -45,6 +45,7 @@ export default function ProductDetails({ handleAdd, item }) {
                   </div>
                   <div className="w-full h-3/4 flex justify-center">
                     <Image
+                      alt="full image"
                       src={item.image}
                       height={500}
                       width={500}
@@ -55,7 +56,7 @@ export default function ProductDetails({ handleAdd, item }) {
               )}
 
               <div className="flex flex-col justify-center  p-2 md:w-1/2 md:max-w-sm">
-                <p className="font-semibold text-xl">{name}</p>
+                <p className="font-semibold text-xl">{item.name}</p>
                 <p className="text-lg font-bold">
                   ₦ {item.price}{" "}
                   <del className="text-gray-400 text-sm">₦ 1000</del>
@@ -69,7 +70,7 @@ export default function ProductDetails({ handleAdd, item }) {
                       Description
                     </p>
                     <IconButton onClick={() => setHidden(!hidden)}>
-                      {hidden ? <ExpandMore /> : <ExpandLess />}
+                      {hidden ?  <ExpandLess /> :<ExpandMore/>}
                     </IconButton>
                   </div>
 

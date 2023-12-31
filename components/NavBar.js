@@ -6,7 +6,7 @@ import Link from "next/link";
 function NavBar() {
   const { itemsInCart, setMenuState, setCartState } = useContext(ShopContext);
   return (
-    <nav className="w-full flex z-40 px-8 justify-between fixed bg-sky-800 items-center h-16 pl-4 ">
+    <nav className="w-full max-w-3xl flex z-40 px-8 justify-between fixed bg-sky-800 items-center h-16 pl-4 ">
       <button className="text-white" onClick={() => setMenuState(true)}>
         <Menu />
       </button>
