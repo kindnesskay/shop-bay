@@ -12,7 +12,7 @@ function Login() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const { user, setUser, isLoading, setIsLoading } = useContext(ShopContext);
-  const [visible,setVisible]=useState(false)
+  const [visible,setVisible]=useState(true)
   const router = useRouter();
   useEffect(() => {
     setTimeout(() => {
@@ -40,9 +40,9 @@ function Login() {
   };
   return (
     <>
-      {isLoading ? (
-        <Loading />
-      ) : (
+      {
+    
+    
         visible &&
         <section className="flex justify-center items-center w-full p-2">
           <form className="flex flex-col w-full max-w-sm gap-1">
@@ -89,7 +89,7 @@ function Login() {
             </p>
           </form>
         </section>
-      )}
+      }
     </>
   );
 }

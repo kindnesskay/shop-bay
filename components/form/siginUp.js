@@ -3,7 +3,6 @@ import { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import { Auth } from "@/config/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-
 import { useRouter } from "next/navigation";
 import Loading from "../loader";
 import { ShopContext } from "@/context/usercontext";
@@ -13,7 +12,7 @@ function SignUp() {
   const [verifyPwd, setVerfyPwd] = useState("");
   const [pwd_error, setPwdError] = useState("");
   const { user, setUser, isLoading, setIsLoading } = useContext(ShopContext);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
   const router = useRouter();
   useEffect(() => {
     setTimeout(() => {
@@ -46,9 +45,7 @@ function SignUp() {
   };
   return (
     <>
-      {isLoading ? (
-        <Loading />
-      ) : (
+      {
         visible && (
           <section className="p-2 flex justify-center h-full items-center">
             <form className="flex flex-col w-full p-2 max-w-sm gap-2">
@@ -110,7 +107,7 @@ function SignUp() {
             </form>
           </section>
         )
-      )}
+    }
     </>
   );
 }
