@@ -45,33 +45,35 @@ function Login() {
       ) : (
         visible &&
         <section className="flex justify-center items-center w-full p-2">
-          <form className="flex flex-col gap-4 w-full max-w-sm">
+          <form className="flex flex-col w-full max-w-sm gap-1">
             <h4 className="text-center text-4xl font-semibold">Welcome Back</h4>
-            <label htmlFor="email" className="text-2xl font-semibold ">
+            <label htmlFor="email" className="text-lg hidden">
               Email
             </label>
             <input
               name="email"
-              className="text-center h-16 text-2xl text-gray-700 text-md rounded-xl ring-1 ring-inset ring-gray-400 p-2"
+              placeholder="Email"
+              className="h-12 text-2xl text-gray-700 text-md rounded-sm border-2 border-solid border-sky-700 p-2 mb-2"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <span>{emailError}</span>
-            <label htmlFor="password" className="text-2xl font-semibold">
-              {" "}
+            <label htmlFor="password" className="text-lg hidden">
+              
               Password
             </label>
             <input
-              className="text-center text-gray-700 h-16  text-2xl text-md rounded-xl ring-1 ring-inset ring-gray-400 p-2"
+              className="text-gray-700 h-12  text-2xl text-md rounded-sm border-2 border-solid border-sky-700 p-2 mb-2"
               type="password"
               name="password"
+              placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
             <span>{passwordError}</span>
             <button
               onClick={handleSignIn}
-              className="bg-sky-950 text-white h-16 p-2 w-full rounded-xl font-semibold text-2xl"
+              className="bg-sky-950 text-white h-12 p-2 w-full rounded-sm font-semibold text-lg"
             >
               LogIn
             </button>

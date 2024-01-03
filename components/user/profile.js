@@ -27,12 +27,12 @@ export default function Profile() {
             </div>
           ) : (
             <div className="w-full h-full flex p-2 flex-col items-center gap-3">
-              <p className="text-gray-400 font-semibold text-sm">
-                You are not logged in
-              </p>
-              <Link href="/auth/login" >
-                Sign in
-              </Link>
+              <div className=" mt-auto mb-auto text-center">
+                <p className="text-gray-400 font-semibold text-sm">
+                  You are not logged in
+                </p>
+                <Link href="/auth/login">Sign in</Link>
+              </div>
             </div>
           )}
         </div>
@@ -47,7 +47,12 @@ function ProfileHeader({ userEmail }) {
       <div className="h-20 w-full p-2 px-4 flex justify-between">
         <div className="flex  flex-col gap-2 h-fit items-center">
           <div className="rounded-full h-fit overflow-hidden w-fit">
-            <Image src={"/no_image.jpg"} height={48} width={48} alt="profile photo"/>
+            <Image
+              src={"/no_image.jpg"}
+              height={48}
+              width={48}
+              alt="profile photo"
+            />
           </div>
           <p className="text-xs ">{userEmail}</p>
         </div>
