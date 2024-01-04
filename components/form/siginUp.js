@@ -45,69 +45,63 @@ function SignUp() {
   };
   return (
     <>
-      {
-        visible && (
-          <section className="p-2 flex justify-center h-full items-center">
-            <form className="flex flex-col w-full p-2 max-w-sm gap-2">
-              <h4 className="text-center text-2xl mb-2">Welcome to Shop Bay</h4>
-              <p className="text-center font-thin">Sign up with your email and create a strong password to continue</p>
+      {visible && (
+        <section className="p-2 flex justify-center h-screen items-center ">
+          <form className="flex flex-col w-full p-2 max-w-sm gap-2">
+            <h4 className="text-center text-2xl mb-2">Welcome to Shop Bay</h4>
+            <p className="text-center text-xs font-thin">
+              Sign up with your email and create a strong password to continue
+            </p>
 
-              <label htmlFor="email" className="text-lg  hidden">
-                Email
-              </label>
+            <label htmlFor="email" className="text-md flex flex-col">
+              Email
               <input
                 name="email"
                 placeholder="Email"
-                className=" text-gray-700  h-12 text-lg rounded-sm border-2 border-solid border-sky-700 p-2 mb-2"
+                className=" text-gray-700  h-12 text-lg rounded-md border border-solid border-sky-700 p-2 mb-2"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <label htmlFor="password" className="text-lg hidden ">
-                Password
-              </label>
+            </label>
+            <label htmlFor="password" className="text-md flex flex-col ">
+              Password
               <input
-                className=" text-gray-700 text-lg h-12 rounded-sm border-2 border-solid border-sky-700 p-2 mb-2"
+                className=" text-gray-700 text-lg h-12 rounded-md border border-solid border-sky-700 p-2 mb-2"
                 name="password"
                 type="password"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <label
-                htmlFor="verifypassword"
-                className="text-lg  hidden"
-              >
-                Verify password
-              </label>
+            </label>
+            <label htmlFor="verifypassword" className="text-md flex flex-col">
+              Verify password
               <input
-                className=" text-gray-400 text-lg h-12  rounded-sm border-2 border-solid border-sky-700 p-2 mb-2"
+                className=" text-gray-700 text-lg h-12  rounded-md border border-solid border-sky-700 p-2 mb-2"
                 name="verifypassword"
                 type="Password"
                 placeholder="verify passoword"
                 value={verifyPwd}
                 onChange={(e) => setVerfyPwd(e.target.value)}
               />
-              <span>{pwd_error}</span>
+            </label>
+            <span>{pwd_error}</span>
 
-              <button
-                onClick={handleSignUp}
-                className="text-white w-full p-2 text-2xl hlg  bg-sky-950 rounded-sm"
-              >
-                Sign up
-              </button>
-              <p className="text-center  text-lg text-gray-800">
-                Already have an Account?{" "}
-                <Link
-                  href="/auth/login"
-                  className="underline underline-offset-4"
-                >
-                  Login
-                </Link>
-              </p>
-            </form>
-          </section>
-        )
-    }
+            <button
+              onClick={handleSignUp}
+              className="text-white w-full p-2 text-2xl   bg-sky-800 rounded-lg"
+            >
+              Sign up
+            </button>
+            <p className="text-center  text-lg text-gray-800">
+              Already have an Account?{" "}
+              <Link href="/auth/login" className="underline underline-offset-4">
+                Login
+              </Link>
+            </p>
+          </form>
+        </section>
+      )}
     </>
   );
 }
