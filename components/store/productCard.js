@@ -8,10 +8,10 @@ function ProductCard({ item, handleAdd, linkRef }) {
     <div className="flex flex-col gap-2 bg-white items-center justify-between h-[350px] w-full max-w-[250px]  overflow-hidden rounded-md border-2 border-solid border-sky-600">
       <Link
         href={linkRef || "#"}
-        className="w-full justify-center flex mt-auto mb-auto overflow-hidden rounded-md"
+        className="w-full  justify-center flex mt-auto mb-auto overflow-hidden rounded-md"
       >
         
-          <Image height={200} width={200} alt={name} src={image} className="w-auto h-auto"/>
+          <Image height={300} width={300} alt={name} src={image} className="w-auto h-auto"/>
       
       </Link>
       <div className="w-full flex flex-col px-2 gap-2 py-4 ">

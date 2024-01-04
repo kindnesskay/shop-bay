@@ -53,7 +53,7 @@ function Page() {
           <Loading />
         ) : (
           visible && (
-            <div className="grid grid-cols-1 xl:grid-cols-4 gap-2 px-2 xxs:grid-cols-2 sm:grid-cols-3 gap-y-2.5 items-center  w-fit">
+            <div className="grid grid-cols-1 xl:grid-cols-4 gap-2 px-2 xxs:grid-cols-2 sm:grid-cols-3 gap-y-2.5 items-center  w-full">
               {data?.map((item) => {
                 return (
                   <ProductCard

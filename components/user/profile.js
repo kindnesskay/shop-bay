@@ -6,15 +6,17 @@ import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import { Auth } from "@/config/firebase";
-import { signOut } from "firebase/auth";
+import { getAuth, signOut } from "firebase/auth";
 export default function Profile() {
-  const { user } = useContext(ShopContext);
+  const [user, setUser] = useState(null);
   const [userEmail, setUserEmail] = useState("");
   useEffect(() => {
-    if (user !== null) {
-      setUserEmail(user.email);
+    const userDetails = getAuth();
+    if (userDetails !== null) {
+      setUser(userDetails);
+      console.log(userDetails?.currentUser);
     }
-  }, []);
+  }, [user]);
 
   return (
     <section className="h-full w-full">
