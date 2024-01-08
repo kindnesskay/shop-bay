@@ -1,5 +1,6 @@
 import Profile from "@/components/user/profile";
-function page() {
+
+async function page() {
   return <Profile />;
 }
 

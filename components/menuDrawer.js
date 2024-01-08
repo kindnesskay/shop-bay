@@ -4,6 +4,7 @@ import { Close, Person, Shop2 } from "@mui/icons-material";
 import Drawer from "@mui/material/Drawer";
 import { useContext } from "react";
 import { HomeButton, LinkButton } from "./buttonLinks";
+import CategoriesCol from "./store/CategoriesCol";
 
 function MenuDrawer() {
   const { menuState, setMenuState } = useContext(ShopContext);
@@ -17,13 +18,14 @@ function MenuDrawer() {
           </button>
         </div>
 
-        <div className="w-full flex flex-col gap-2 p-2">
+        <div className="w-full max-w-[200px] flex flex-col gap-2 p-2">
           <LinkButton
             title={"Profile"}
             link={"/user/profile"}
             icon={<Person />}
           />
           <LinkButton title={"Shop"} link={"/shop"} icon={<Shop2 />} />
+          <CategoriesCol />
         </div>
       </div>
     </Drawer>

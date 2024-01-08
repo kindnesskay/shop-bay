@@ -3,18 +3,12 @@ import { ShopContext } from "@/context/usercontext";
 import { Settings } from "@mui/icons-material";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import Link from "next/link";
 import { Auth } from "@/config/firebase";
 import { signOut } from "firebase/auth";
 export default function Profile() {
   const { user } = useContext(ShopContext);
-  const [userEmail, setUserEmail] = useState("");
-  useEffect(() => {
-    if (user !== null) {
-      setUserEmail(user.email);
-    }
-  }, []);
 
   return (
     <section className="h-full w-full">
@@ -22,17 +16,17 @@ export default function Profile() {
         <div className="h-full w-full">
           {user !== null ? (
             <div className="h-full ">
-              <ProfileHeader userEmail={userEmail} />
+              <ProfileHeader userEmail={user.email || ""} />
               <Navigations />
             </div>
           ) : (
             <div className="w-full h-full flex p-2 flex-col items-center gap-3">
-              <p className="text-gray-400 font-semibold text-sm">
-                You are not logged in
-              </p>
-              <Link href="/auth/login" >
-                Sign in
-              </Link>
+              <div className=" mt-auto mb-auto text-center">
+                <p className="text-gray-400 font-semibold text-sm">
+                  You are not logged in
+                </p>
+                <Link href="/auth/login">Sign in</Link>
+              </div>
             </div>
           )}
         </div>
@@ -47,7 +41,12 @@ function ProfileHeader({ userEmail }) {
       <div className="h-20 w-full p-2 px-4 flex justify-between">
         <div className="flex  flex-col gap-2 h-fit items-center">
           <div className="rounded-full h-fit overflow-hidden w-fit">
-            <Image src={"/no_image.jpg"} height={48} width={48} alt="profile photo"/>
+            <Image
+              src={"/no_image.jpg"}
+              height={48}
+              width={48}
+              alt="profile photo"
+            />
           </div>
           <p className="text-xs ">{userEmail}</p>
         </div>

@@ -12,12 +12,12 @@ function Login() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const { user, setUser, isLoading, setIsLoading } = useContext(ShopContext);
-  const [visible,setVisible]=useState(false)
+  const [visible, setVisible] = useState(true);
   const router = useRouter();
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-      setVisible(true)
+      setVisible(true);
     }, 1000);
     if (user !== null) {
       router.push("/user/profile");
@@ -40,38 +40,38 @@ function Login() {
   };
   return (
     <>
-      {isLoading ? (
-        <Loading />
-      ) : (
-        visible &&
-        <section className="flex justify-center items-center w-full p-2">
-          <form className="flex flex-col gap-4 w-full max-w-sm">
-            <h4 className="text-center text-4xl font-semibold">Welcome Back</h4>
-            <label htmlFor="email" className="text-2xl font-semibold ">
+      {visible && (
+        <section className="flex justify-center items-center w-full h-screen p-2">
+          <form className="flex flex-col w-full max-w-sm gap-2 p-2">
+            <h4 className="text-center text-4xl font-semibold mb-4">
+              Hi,Welcome Back
+            </h4>
+            <label htmlFor="email" className="text-lg flex flex-col">
               Email
+              <input
+                name="email"
+                placeholder="Email"
+                className="h-12 text-2xl text-gray-700 text-md rounded-md border border-solid border-sky-700 p-2 mb-2"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </label>
-            <input
-              name="email"
-              className="text-center h-16 text-2xl text-gray-700 text-md rounded-xl ring-1 ring-inset ring-gray-400 p-2"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
             <span>{emailError}</span>
-            <label htmlFor="password" className="text-2xl font-semibold">
-              {" "}
+            <label htmlFor="password" className="text-lg flex flex-col">
               Password
+              <input
+                className="text-gray-700 h-12  text-2xl text-md rounded-md border border-solid border-sky-700 p-2 mb-2"
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </label>
-            <input
-              className="text-center text-gray-700 h-16  text-2xl text-md rounded-xl ring-1 ring-inset ring-gray-400 p-2"
-              type="password"
-              name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
             <span>{passwordError}</span>
             <button
               onClick={handleSignIn}
-              className="bg-sky-950 text-white h-16 p-2 w-full rounded-xl font-semibold text-2xl"
+              className="bg-sky-800 text-white h-12 p-2 w-full rounded-md font-semibold text-lg"
             >
               LogIn
             </button>

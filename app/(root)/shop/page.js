@@ -48,12 +48,12 @@ function Page() {
   }, []);
   return (
     <>
-      <div className="mx-auto max-w-2xl px-1.5 py-1.5 sm:px-1.5 sm:py-4 lg:max-w-7xl lg:px-8">
+      <div className="pt-2 w-full flex justify-center">
         {isLoading ? (
           <Loading />
         ) : (
           visible && (
-            <div className="grid grid-cols-1 xs:grid-cols-3 xxs:grid-cols-2 gap-x-2 gap-y-2.5  sm:grid-cols-4 md:grid-cols-4  md:gap-x-4 lg:gap-x-8">
+            <div className="grid grid-cols-1 xl:grid-cols-4 gap-2 px-2 xxs:grid-cols-2 sm:grid-cols-3 gap-y-2.5 items-center  w-full">
               {data?.map((item) => {
                 return (
                   <ProductCard
