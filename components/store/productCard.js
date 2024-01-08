@@ -11,7 +11,7 @@ function ProductCard({ item, handleAdd, linkRef }) {
         className="w-full  justify-center flex mt-auto mb-auto overflow-hidden rounded-md"
       >
         
-          <Image height={300} width={300} alt={name} src={image} className="w-auto h-auto"/>
+          <Image height={300} width={300} alt={name} src={image} loading="lazy" className="w-auto h-auto"/>
       
       </Link>
       <div className="w-full flex flex-col px-2 gap-2 py-4 ">

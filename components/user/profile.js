@@ -3,20 +3,12 @@ import { ShopContext } from "@/context/usercontext";
 import { Settings } from "@mui/icons-material";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import Link from "next/link";
 import { Auth } from "@/config/firebase";
-import { getAuth, signOut } from "firebase/auth";
+import { signOut } from "firebase/auth";
 export default function Profile() {
-  const [user, setUser] = useState(null);
-  const [userEmail, setUserEmail] = useState("");
-  useEffect(() => {
-    const userDetails = getAuth();
-    if (userDetails !== null) {
-      setUser(userDetails);
-      console.log(userDetails?.currentUser);
-    }
-  }, [user]);
+  const { user } = useContext(ShopContext);
 
   return (
     <section className="h-full w-full">
@@ -24,7 +16,7 @@ export default function Profile() {
         <div className="h-full w-full">
           {user !== null ? (
             <div className="h-full ">
-              <ProfileHeader userEmail={userEmail} />
+              <ProfileHeader userEmail={user.email || ""} />
               <Navigations />
             </div>
           ) : (
