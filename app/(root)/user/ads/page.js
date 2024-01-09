@@ -1,14 +1,7 @@
 import Inventory from "@/components/user/inventory";
 import { Auth, db } from "@/config/firebase";
-import { getAuth } from "firebase/auth";
-import {
-  collection,
-  getDocs,
-  getDoc,
-  query,
-  where,
-  doc,
-} from "firebase/firestore";
+
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 import { Suspense } from "react";
 async function getData() {
